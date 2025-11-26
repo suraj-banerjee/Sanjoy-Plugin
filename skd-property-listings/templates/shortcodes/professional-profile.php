@@ -46,6 +46,21 @@ $user_certifications = $wpdb->get_results($wpdb->prepare(
     $professional->user_id
 ));
 
+// Check if current user is employer and if VDA is already saved
+$is_saved = false;
+$current_user_id = get_current_user_id();
+$current_user_type = '';
+if ($current_user_id) {
+    $current_user_type = get_user_meta($current_user_id, 'skd_user_type', true);
+    if ($current_user_type === 'employer') {
+        $is_saved = $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$wpdb->prefix}skd_pl_saved_vdas WHERE employer_id = %d AND vda_id = %d",
+            $current_user_id,
+            $professional->user_id
+        )) > 0;
+    }
+}
+
 // Calculate years of experience (if founded year is available for studios)
 $years_experience = 0;
 if ($professional->user_role === 'studio' && $professional->founded_year) {
@@ -157,10 +172,19 @@ $is_studio = $professional->user_role === 'studio';
                     </a>
                 <?php endif; ?>
 
-                <button class="skd-btn skd-btn-outline" onclick="saveToFavorites(<?php echo $professional->id; ?>)">
-                    <span class="dashicons dashicons-heart"></span>
-                    Save
-                </button>
+                <?php if ($current_user_type === 'employer'): ?>
+                    <button class="skd-btn skd-btn-outline save-vda-btn <?php echo $is_saved ? 'saved' : ''; ?>"
+                        data-vda-id="<?php echo $professional->user_id; ?>"
+                        data-saved="<?php echo $is_saved ? '1' : '0'; ?>">
+                        <iconify-icon icon="<?php echo $is_saved ? 'mdi:bookmark' : 'mdi:bookmark-outline'; ?>"></iconify-icon>
+                        <span><?php echo $is_saved ? 'Saved' : 'Save'; ?></span>
+                    </button>
+                <?php elseif (!is_user_logged_in()): ?>
+                    <a href="<?php echo home_url('/login/'); ?>" class="skd-btn skd-btn-outline">
+                        <iconify-icon icon="mdi:bookmark-outline"></iconify-icon>
+                        Save
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -532,8 +556,98 @@ $is_studio = $professional->user_role === 'studio';
         openPortfolioLightbox(currentPortfolioIndex);
     }
 
+    // Save/Unsave VDA functionality for employers
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.querySelector('.save-vda-btn');
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                const vdaId = this.getAttribute('data-vda-id');
+                const isSaved = this.getAttribute('data-saved') === '1';
+                const action = isSaved ? 'skd_unsave_vda' : 'skd_save_vda';
+                const btn = this;
+
+                // Disable button during request
+                btn.disabled = true;
+
+                fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            action: action,
+                            nonce: '<?php echo wp_create_nonce('skd_ajax_nonce'); ?>',
+                            vda_id: vdaId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Toggle saved state
+                            const newIsSaved = !isSaved;
+                            btn.setAttribute('data-saved', newIsSaved ? '1' : '0');
+
+                            // Update button appearance
+                            const icon = btn.querySelector('iconify-icon');
+                            const text = btn.querySelector('span');
+
+                            if (newIsSaved) {
+                                icon.setAttribute('icon', 'mdi:bookmark');
+                                text.textContent = 'Saved';
+                                btn.classList.add('saved');
+                            } else {
+                                icon.setAttribute('icon', 'mdi:bookmark-outline');
+                                text.textContent = 'Save';
+                                btn.classList.remove('saved');
+                            }
+
+                            // Show success message
+                            showNotification(data.data.message || (newIsSaved ? 'VDA saved to your list' : 'VDA removed from saved list'), 'success');
+                        } else {
+                            showNotification(data.data.message || 'Failed to update saved list', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showNotification('An error occurred. Please try again.', 'error');
+                    })
+                    .finally(() => {
+                        btn.disabled = false;
+                    });
+            });
+        }
+    });
+
+    function showNotification(message, type) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `skd-notification skd-notification-${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: ${type === 'success' ? '#4caf50' : '#f44336'};
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 10000;
+            animation: slideIn 0.3s ease-out;
+        `;
+
+        document.body.appendChild(notification);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
     function saveToFavorites(professionalId) {
-        // Implement favorites functionality
+        // Legacy function - replaced by save-vda-btn click handler
         console.log('Save to favorites:', professionalId);
     }
 

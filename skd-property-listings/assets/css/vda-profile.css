@@ -4,525 +4,520 @@
  */
 
 .vda-profile-page {
-  background: #f5f7fa;
-  padding: 40px 0;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, sans-serif;
+    background: #f5f7fa;
+    padding: 40px 0;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .vda-profile-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 350px 1fr;
-  gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
 }
 
 /* Sidebar */
 .vda-profile-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .vda-profile-card-widget {
-  background: white;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 /* Main Profile Card */
 .vda-profile-main-card {
-  text-align: center;
+    text-align: center;
 }
 
 .vda-profile-avatar-large {
-  width: 140px;
-  height: 140px;
-  margin: 0 auto 20px;
-  position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    position: relative;
 }
 
 .vda-profile-avatar-large img,
 .vda-profile-avatar-large .vda-avatar-placeholder {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .vda-profile-avatar-large .vda-avatar-placeholder {
-  background-color: var(--e-global-color-accent);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 56px;
-  font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    font-weight: 700;
 }
 
 .vda-profile-avatar-large .vda-verified-badge {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: #4caf50;
-  color: white;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 4px solid #fff;
-  font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #4caf50;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;
+    font-size: 20px;
 }
 
 .vda-profile-name {
-  font-size: 24px;
-  font-weight: 700;
-  color: #333;
-  margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 8px;
 }
 
 .vda-profile-title {
-  font-size: 15px;
-  color: var(--color-primary);
-  font-weight: 600;
-  margin: 0 0 15px;
+    font-size: 15px;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 0 0 15px;
 }
 
 .vda-profile-rating {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 15px;
-  font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
 }
 
 .vda-stars {
-  color: #ffc107;
-  font-size: 18px;
+    color: #ffc107;
+    font-size: 18px;
 }
 
 .vda-rating-count {
-  color: #999;
+    color: #999;
 }
 
 .vda-profile-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 15px 0;
 }
 
 .vda-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .vda-badge.top-rated {
-  background: #fff3e0;
-  color: #f57c00;
+    background: #fff3e0;
+    color: #f57c00;
 }
 
 .vda-badge.verified {
-  background: #e8f5e9;
-  color: #2e7d32;
+    background: #e8f5e9;
+    color: #2e7d32;
 }
 
 .vda-badge.featured {
-  background: #e3f2fd;
-  color: #1565c0;
+    background: #e3f2fd;
+    color: #1565c0;
 }
 
 /* Contact Buttons */
 .vda-contact-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .vda-btn-contact {
-  width: 100%;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s;
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
 }
 
 .vda-btn-contact.primary {
-  background-color: var(--e-global-color-accent);
-  color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
 }
 
 .vda-btn-contact.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .vda-btn-contact.secondary {
-  background: white;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+    background: white;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
 }
 
 .vda-btn-contact.secondary:hover {
-  background: #f5f5f5;
+    background: #f5f5f5;
 }
 
 /* Pricing Widget */
 .vda-pricing-info h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 15px;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 12px;
 }
 
 .vda-price-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .vda-price-item:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .vda-price-label {
-  color: #666;
-  font-size: 14px;
+    color: #666;
+    font-size: 14px;
 }
 
 .vda-price-value {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-primary);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
 }
 
 /* Skills Widget */
 .vda-skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .vda-skill-tag {
-  background: #f5f5f5;
-  color: #333;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
+    background: #f5f5f5;
+    color: #333;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 /* Info List Widget */
 .vda-info-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .vda-info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 .vda-info-icon {
-  color: var(--color-primary);
-  font-size: 20px;
-  flex-shrink: 0;
-  margin-top: 2px;
+    color: var(--color-primary);
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
 }
 
 .vda-info-content h4 {
-  font-size: 13px;
-  color: #999;
-  margin: 0 0 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    font-size: 13px;
+    color: #999;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .vda-info-content p {
-  font-size: 14px;
-  color: #333;
-  font-weight: 600;
-  margin: 0;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+    margin: 0;
 }
 
 /* Main Content Area */
 .vda-profile-main {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .vda-content-section {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .vda-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .vda-section-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #333;
-  margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
 }
 
 /* About Section */
 .vda-about-text {
-  color: #666;
-  font-size: 15px;
-  line-height: 1.7;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 /* Portfolio Grid */
 .vda-portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .vda-portfolio-item {
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s;
-  background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #f5f5f5;
 }
 
 .vda-portfolio-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .vda-portfolio-image {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
 }
 
 .vda-portfolio-info {
-  padding: 15px;
+    padding: 15px;
 }
 
 .vda-portfolio-info h4 {
-  font-size: 15px;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 6px;
 }
 
 .vda-portfolio-meta {
-  display: flex;
-  gap: 15px;
-  font-size: 13px;
-  color: #999;
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #999;
 }
 
 /* Reviews Section */
 .vda-reviews-summary {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  padding: 20px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 25px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 25px;
 }
 
 .vda-avg-rating {
-  text-align: center;
+    text-align: center;
 }
 
 .vda-avg-rating-score {
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
 }
 
 .vda-avg-rating-stars {
-  color: #ffc107;
-  font-size: 20px;
-  margin: 8px 0;
+    color: #ffc107;
+    font-size: 20px;
+    margin: 8px 0;
 }
 
 .vda-avg-rating-count {
-  color: #999;
-  font-size: 14px;
+    color: #999;
+    font-size: 14px;
 }
 
 .vda-rating-breakdown {
-  flex: 1;
+    flex: 1;
 }
 
 .vda-rating-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
 }
 
 .vda-rating-bar-label {
-  font-size: 13px;
-  color: #666;
-  min-width: 60px;
+    font-size: 13px;
+    color: #666;
+    min-width: 60px;
 }
 
 .vda-rating-bar-fill {
-  flex: 1;
-  height: 8px;
-  background: #e0e0e0;
-  border-radius: 4px;
-  overflow: hidden;
+    flex: 1;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .vda-rating-bar-inner {
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
 }
 
 .vda-rating-bar-count {
-  font-size: 13px;
-  color: #999;
-  min-width: 40px;
-  text-align: right;
+    font-size: 13px;
+    color: #999;
+    min-width: 40px;
+    text-align: right;
 }
 
 /* Review Items */
 .vda-reviews-list {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .vda-review-item {
-  padding-bottom: 25px;
-  border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .vda-review-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .vda-review-header {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 12px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
 }
 
 .vda-reviewer-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .vda-reviewer-info {
-  flex: 1;
+    flex: 1;
 }
 
 .vda-reviewer-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px;
 }
 
 .vda-review-meta {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  font-size: 13px;
-  color: #999;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 13px;
+    color: #999;
 }
 
 .vda-review-stars {
-  color: #ffc107;
+    color: #ffc107;
 }
 
 .vda-review-text {
-  color: #666;
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .vda-profile-container {
-    grid-template-columns: 300px 1fr;
-  }
+    .vda-profile-container {
+        grid-template-columns: 300px 1fr;
+    }
 
-  .vda-portfolio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  }
+    .vda-portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
-  .vda-profile-container {
-    grid-template-columns: 1fr;
-  }
+    .vda-profile-container {
+        grid-template-columns: 1fr;
+    }
 
-  .vda-profile-sidebar {
-    order: 2;
-  }
+    .vda-profile-sidebar {
+        order: 2;
+    }
 
-  .vda-profile-main {
-    order: 1;
-  }
+    .vda-profile-main {
+        order: 1;
+    }
 
-  .vda-portfolio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+    .vda-portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 
-  .vda-reviews-summary {
-    flex-direction: column;
-    gap: 20px;
-  }
+    .vda-reviews-summary {
+        flex-direction: column;
+        gap: 20px;
+    }
 
-  .vda-content-section {
-    padding: 20px;
-  }
+    .vda-content-section {
+        padding: 20px;
+    }
 }

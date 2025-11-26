@@ -84,6 +84,9 @@ class SKD_Plugin_Autoloader
         wp_enqueue_style('skd-pl-vda-profile', SKD_PL_PLUGIN_URL . 'assets/css/vda-profile.css', [], SKD_PL_VERSION);
         wp_enqueue_style('skd-pl-vda-listing', SKD_PL_PLUGIN_URL . 'assets/css/vda-listing.css', [], SKD_PL_VERSION);
 
+        // Employer specific styles (JS is embedded in template)
+        wp_enqueue_style('skd-pl-employer-dashboard', SKD_PL_PLUGIN_URL . 'assets/css/employer-dashboard.css', [], SKD_PL_VERSION);
+
         wp_enqueue_script('skd-pl-web-scripts', SKD_PL_PLUGIN_URL . 'assets/js/web-scripts.js', ['jquery'], SKD_PL_VERSION, true);
 
         // Localize script for AJAX

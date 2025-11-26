@@ -1010,6 +1010,43 @@ class SKD_PL_Database
         ) $charset_collate;";
         dbDelta($sql);
 
+        // Table for Employer Profiles
+        $employer_profiles_table = $wpdb->prefix . 'skd_pl_employer_profiles';
+        $sql = "CREATE TABLE $employer_profiles_table (
+            id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            user_id BIGINT(20) UNSIGNED NOT NULL,
+            company_name VARCHAR(255) NULL,
+            company_size VARCHAR(50) NULL COMMENT '1-10, 11-50, 51-200, 201-500, 500+',
+            industry VARCHAR(255) NULL,
+            website VARCHAR(255) NULL,
+            phone VARCHAR(50) NULL,
+            bio TEXT NULL,
+            logo_url VARCHAR(500) NULL,
+            location VARCHAR(255) NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            UNIQUE KEY user_id (user_id),
+            INDEX company_size (company_size),
+            INDEX industry (industry)
+        ) $charset_collate;";
+        dbDelta($sql);
+
+        // Table for Jobs (Already exists above, but ensure it's included)
+
+        // Table for Saved VDAs (Employer bookmarks)
+        $saved_vdas_table = $wpdb->prefix . 'skd_pl_saved_vdas';
+        $sql = "CREATE TABLE $saved_vdas_table (
+            id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            employer_id BIGINT(20) UNSIGNED NOT NULL,
+            vda_id BIGINT(20) UNSIGNED NOT NULL,
+            notes TEXT NULL,
+            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE KEY employer_vda (employer_id, vda_id),
+            INDEX employer_id (employer_id),
+            INDEX vda_id (vda_id)
+        ) $charset_collate;";
+        dbDelta($sql);
+
         // Add more tables here as the project grows
         // Example:
         // $another_table = $wpdb->prefix . 'skd_pl_another_table';
