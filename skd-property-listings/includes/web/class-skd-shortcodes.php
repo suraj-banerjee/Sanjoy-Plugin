@@ -123,47 +123,45 @@ class SKD_Shortcodes
             echo '<div class="updated"><p>:white_check_mark: Account details updated successfully.</p></div>';
         }
 ?>
-<form method="post" action="">
-    <?php wp_nonce_field('custom_edit_account_action', 'custom_edit_account_nonce'); ?>
-    <p>
-        <label for="first_name">First name <span class="required">*</span></label>
-        <input type="text" name="first_name" id="first_name" value="<?php echo esc_attr($user->first_name); ?>"
-            required>
-    </p>
-    <p>
-        <label for="last_name">Last name <span class="required">*</span></label>
-        <input type="text" name="last_name" id="last_name" value="<?php echo esc_attr($user->last_name); ?>" required>
-    </p>
-    <p>
-        <label for="display_name">Display name <span class="required">*</span></label>
-        <input type="text" name="display_name" id="display_name" value="<?php echo esc_attr($user->display_name); ?>"
-            required>
-        <small>This will be how your name is displayed publicly.</small>
-    </p>
-    <p>
-        <label for="email">Email address <span class="required">*</span></label>
-        <input type="email" name="email" id="email" value="<?php echo esc_attr($user->user_email); ?>" required>
-    </p>
-    <fieldset>
-        <legend>Password change</legend>
-        <p>
-            <label for="current_password">Current password</label>
-            <input type="password" name="current_password" id="current_password">
-        </p>
-        <p>
-            <label for="new_password">New password</label>
-            <input type="password" name="new_password" id="new_password">
-        </p>
-        <p>
-            <label for="confirm_password">Confirm new password</label>
-            <input type="password" name="confirm_password" id="confirm_password">
-        </p>
-    </fieldset>
-    <p>
-        <button type="submit" name="custom_save_account" class="button">Save changes</button>
-    </p>
-</form>
-<?php
+        <form method="post" action="">
+            <?php wp_nonce_field('custom_edit_account_action', 'custom_edit_account_nonce'); ?>
+            <p>
+                <label for="first_name">First name <span class="required">*</span></label>
+                <input type="text" name="first_name" id="first_name" value="<?php echo esc_attr($user->first_name); ?>" required>
+            </p>
+            <p>
+                <label for="last_name">Last name <span class="required">*</span></label>
+                <input type="text" name="last_name" id="last_name" value="<?php echo esc_attr($user->last_name); ?>" required>
+            </p>
+            <p>
+                <label for="display_name">Display name <span class="required">*</span></label>
+                <input type="text" name="display_name" id="display_name" value="<?php echo esc_attr($user->display_name); ?>" required>
+                <small>This will be how your name is displayed publicly.</small>
+            </p>
+            <p>
+                <label for="email">Email address <span class="required">*</span></label>
+                <input type="email" name="email" id="email" value="<?php echo esc_attr($user->user_email); ?>" required>
+            </p>
+            <fieldset>
+                <legend>Password change</legend>
+                <p>
+                    <label for="current_password">Current password</label>
+                    <input type="password" name="current_password" id="current_password">
+                </p>
+                <p>
+                    <label for="new_password">New password</label>
+                    <input type="password" name="new_password" id="new_password">
+                </p>
+                <p>
+                    <label for="confirm_password">Confirm new password</label>
+                    <input type="password" name="confirm_password" id="confirm_password">
+                </p>
+            </fieldset>
+            <p>
+                <button type="submit" name="custom_save_account" class="button">Save changes</button>
+            </p>
+        </form>
+        <?php
         return ob_get_clean();
     }
 
@@ -2713,7 +2711,7 @@ class SKD_Shortcodes
                         $spec_id
                     ));
                     if ($spec) {
-                        $featured_skills .= '<span class="skd-skill-tag-featured"><iconify-icon icon="noto:graduation-cap"></iconify-icon> ' . esc_html($spec->name) . '</span>';
+                        $featured_skills .= '<span class="skd-skill-tag-featured"><iconify-icon icon="mdi:check"></iconify-icon> ' . esc_html($spec->name) . '</span>';
                     }
                 }
             }
@@ -2739,75 +2737,74 @@ class SKD_Shortcodes
             $avatar_url = !empty($professional->avatar_url) ? $professional->avatar_url : get_avatar_url($professional->user_id, ['size' => 200]);
             $profile_url = home_url('/vda-profile/?vda_id=' . $professional->user_id);
         ?>
-<div class="skd-professional-card" data-pro-id="<?php echo $professional->user_id; ?>">
-    <!-- Avatar -->
-    <div class="skd-pro-avatar">
-        <?php if (!empty($professional->avatar_url)): ?>
-        <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($professional->display_name); ?>">
-        <?php else: ?>
-        <div class="skd-avatar-placeholder">
-            <?php echo strtoupper(substr($professional->display_name, 0, 1)); ?>
-        </div>
-        <?php endif; ?>
-    </div>
+            <div class="skd-professional-card" data-pro-id="<?php echo $professional->user_id; ?>">
+                <!-- Avatar -->
+                <div class="skd-pro-avatar">
+                    <?php if (!empty($professional->avatar_url)): ?>
+                        <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($professional->display_name); ?>">
+                    <?php else: ?>
+                        <div class="skd-avatar-placeholder">
+                            <?php echo strtoupper(substr($professional->display_name, 0, 1)); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
 
-    <!-- Name & Title -->
-    <div class="skd-pro-header">
-        <h5 class="skd-pro-name">
-            <a href="<?php echo esc_url($profile_url); ?>">
-                <?php echo esc_html($professional->display_name); ?>
-            </a>
-            <?php if ($professional->is_verified): ?>
-            <iconify-icon icon="mdi:verified-user" class="skd-icon-verified"></iconify-icon>
-            <?php endif; ?>
-        </h5>
-        <p class="skd-pro-title"><?php echo esc_html($professional->tagline ?? 'Individual Designer'); ?></p>
-    </div>
+                <!-- Name & Title -->
+                <div class="skd-pro-header">
+                    <h3 class="skd-pro-name">
+                        <a href="<?php echo esc_url($profile_url); ?>">
+                            <?php echo esc_html($professional->display_name); ?>
+                        </a>
+                        <?php if ($professional->is_verified): ?>
+                            <iconify-icon icon="mdi:check-decagram" class="skd-icon-verified"></iconify-icon>
+                        <?php endif; ?>
+                    </h3>
+                    <p class="skd-pro-title"><?php echo esc_html($professional->tagline ?? 'Individual Designer'); ?></p>
+                </div>
 
-    <!-- Location & Rate -->
-    <div class="skd-pro-meta">
-        <span class="skd-pro-location">
-            <iconify-icon icon="mdi:map-marker"></iconify-icon>
-            <?php echo esc_html($timezone_display); ?>
-        </span>
-        <span class="skd-pro-rate">
-            <iconify-icon icon="solar:money-bag-bold"></iconify-icon>
-            <span> $<?php echo number_format($professional->hourly_rate ?? 0, 0); ?></span> /hour
-        </span>
-    </div>
+                <!-- Location & Rate -->
+                <div class="skd-pro-meta">
+                    <span class="skd-pro-location">
+                        <iconify-icon icon="mdi:map-marker"></iconify-icon>
+                        <?php echo esc_html($timezone_display); ?>
+                    </span>
+                    <span class="skd-pro-rate">
+                        <iconify-icon icon="mdi:currency-usd"></iconify-icon>
+                        $<?php echo number_format($professional->hourly_rate ?? 0, 0); ?>/hour
+                    </span>
+                </div>
 
-    <!-- Description -->
-    <div class="skd-pro-bio">
-        <?php echo wp_trim_words($professional->bio ?? 'No description available.', 20); ?>
-    </div>
-    <div class="skd-pro-skills-Featureds-wrapper">
-        <!-- Skills Tags -->
-        <div class="skd-pro-skills">
-            <?php echo $skills_html; ?>
-        </div>
+                <!-- Description -->
+                <div class="skd-pro-bio">
+                    <?php echo wp_trim_words($professional->bio ?? 'No description available.', 20); ?>
+                </div>
 
-        <!-- Featured Skills -->
-        <?php if (!empty($featured_skills)): ?>
-        <div class="skd-pro-featured-skills">
-            <?php echo $featured_skills; ?>
-        </div>
-        <?php endif; ?>
-    </div>
-    <!-- Project Type Icons -->
-    <?php if (!empty($project_icons)): ?>
-    <div class="skd-pro-project-types">
-        <?php echo $project_icons; ?>
-    </div>
-    <?php endif; ?>
+                <!-- Skills Tags -->
+                <div class="skd-pro-skills">
+                    <?php echo $skills_html; ?>
+                </div>
 
-    <!-- Action Buttons -->
-    <div class="skd-pro-actions">
-        <a href="<?php echo esc_url($profile_url); ?>" class="skd-btn skd-btn-primary">View Profile</a>
-        <a href="<?php echo esc_url(home_url('/hire-vda/?vda_id=' . $professional->user_id)); ?>"
-            class="skd-btn vda-btn-outline skd-btn-secondary">Hire / Message</a>
-    </div>
-</div>
-<?php
+                <!-- Featured Skills -->
+                <?php if (!empty($featured_skills)): ?>
+                    <div class="skd-pro-featured-skills">
+                        <?php echo $featured_skills; ?>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Project Type Icons -->
+                <?php if (!empty($project_icons)): ?>
+                    <div class="skd-pro-project-types">
+                        <?php echo $project_icons; ?>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Action Buttons -->
+                <div class="skd-pro-actions">
+                    <a href="<?php echo esc_url($profile_url); ?>" class="skd-btn skd-btn-primary">View Profile</a>
+                    <a href="<?php echo esc_url(home_url('/hire-vda/?vda_id=' . $professional->user_id)); ?>" class="skd-btn skd-btn-secondary">Hire / Message</a>
+                </div>
+            </div>
+        <?php
         }
         $html = ob_get_clean();
 
@@ -3001,56 +2998,55 @@ class SKD_Shortcodes
         }
 
         ?>
-<div class="skd-job-card" data-job-id="<?php echo $job->id; ?>">
-    <div class="skd-job-header">
-        <div class="skd-job-title-area">
-            <h3><?php echo esc_html($job->title); ?></h3>
-            <div class="skd-job-company"><?php echo esc_html($job->company_name); ?></div>
-        </div>
-        <div class="skd-job-badges">
-            <?php if ($job->is_featured): ?>
-            <span class="skd-badge featured">Featured</span>
-            <?php endif; ?>
-            <?php if ($job->is_remote): ?>
-            <span class="skd-badge remote">Remote</span>
-            <?php endif; ?>
-            <?php if ($job->urgency === 'high' || $job->urgency === 'asap'): ?>
-            <span class="skd-badge urgent">Urgent</span>
-            <?php endif; ?>
-        </div>
-    </div>
+        <div class="skd-job-card" data-job-id="<?php echo $job->id; ?>">
+            <div class="skd-job-header">
+                <div class="skd-job-title-area">
+                    <h3><?php echo esc_html($job->title); ?></h3>
+                    <div class="skd-job-company"><?php echo esc_html($job->company_name); ?></div>
+                </div>
+                <div class="skd-job-badges">
+                    <?php if ($job->is_featured): ?>
+                        <span class="skd-badge featured">Featured</span>
+                    <?php endif; ?>
+                    <?php if ($job->is_remote): ?>
+                        <span class="skd-badge remote">Remote</span>
+                    <?php endif; ?>
+                    <?php if ($job->urgency === 'high' || $job->urgency === 'asap'): ?>
+                        <span class="skd-badge urgent">Urgent</span>
+                    <?php endif; ?>
+                </div>
+            </div>
 
-    <div class="skd-job-meta">
-        <span class="skd-job-type"><?php echo esc_html(ucwords(str_replace('-', ' ', $job->job_type))); ?></span>
-        <span class="skd-job-location"><?php echo esc_html($job->location); ?></span>
-        <span
-            class="skd-job-experience"><?php echo esc_html(ucwords(str_replace('-', ' ', $job->experience_level))); ?></span>
-        <?php if ($salary_display): ?>
-        <span class="skd-job-salary"><?php echo esc_html($salary_display); ?></span>
-        <?php endif; ?>
-    </div>
+            <div class="skd-job-meta">
+                <span class="skd-job-type"><?php echo esc_html(ucwords(str_replace('-', ' ', $job->job_type))); ?></span>
+                <span class="skd-job-location"><?php echo esc_html($job->location); ?></span>
+                <span class="skd-job-experience"><?php echo esc_html(ucwords(str_replace('-', ' ', $job->experience_level))); ?></span>
+                <?php if ($salary_display): ?>
+                    <span class="skd-job-salary"><?php echo esc_html($salary_display); ?></span>
+                <?php endif; ?>
+            </div>
 
-    <div class="skd-job-summary">
-        <p><?php echo esc_html(wp_trim_words($job->summary, 25)); ?></p>
-    </div>
+            <div class="skd-job-summary">
+                <p><?php echo esc_html(wp_trim_words($job->summary, 25)); ?></p>
+            </div>
 
-    <div class="skd-job-footer">
-        <div class="skd-job-posted">
-            <span class="dashicons dashicons-clock"></span>
-            Posted <?php echo $posted_date; ?>
+            <div class="skd-job-footer">
+                <div class="skd-job-posted">
+                    <span class="dashicons dashicons-clock"></span>
+                    Posted <?php echo $posted_date; ?>
+                </div>
+                <div class="skd-job-actions">
+                    <button class="skd-btn skd-btn-outline skd-btn-small" onclick="saveJob(<?php echo $job->id; ?>, this)">
+                        <span class="dashicons dashicons-heart"></span>
+                        Save
+                    </button>
+                    <button class="skd-btn skd-btn-primary" onclick="applyForJob(<?php echo $job->id; ?>)">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="skd-job-actions">
-            <button class="skd-btn skd-btn-outline skd-btn-small" onclick="saveJob(<?php echo $job->id; ?>, this)">
-                <span class="dashicons dashicons-heart"></span>
-                Save
-            </button>
-            <button class="skd-btn skd-btn-primary" onclick="applyForJob(<?php echo $job->id; ?>)">
-                Apply Now
-            </button>
-        </div>
-    </div>
-</div>
-<?php
+        <?php
     }
 
     /**
@@ -3431,31 +3427,31 @@ class SKD_Shortcodes
                 $is_sent = $message->sender_id == $current_user_id;
                 $message_class = $is_sent ? 'sent' : 'received';
         ?>
-<div class="skd-message <?php echo $message_class; ?>">
-    <?php if (!$is_sent): ?>
-    <div class="skd-message-avatar">
-        <?php if ($message->sender_avatar): ?>
-        <img src="<?php echo esc_url($message->sender_avatar); ?>" alt="<?php echo esc_attr($message->sender_name); ?>">
-        <?php else: ?>
-        <div class="skd-avatar-placeholder">
-            <?php echo strtoupper(substr($message->sender_name, 0, 2)); ?>
-        </div>
-        <?php endif; ?>
-    </div>
-    <?php endif; ?>
+                <div class="skd-message <?php echo $message_class; ?>">
+                    <?php if (!$is_sent): ?>
+                        <div class="skd-message-avatar">
+                            <?php if ($message->sender_avatar): ?>
+                                <img src="<?php echo esc_url($message->sender_avatar); ?>" alt="<?php echo esc_attr($message->sender_name); ?>">
+                            <?php else: ?>
+                                <div class="skd-avatar-placeholder">
+                                    <?php echo strtoupper(substr($message->sender_name, 0, 2)); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
 
-    <div class="skd-message-content">
-        <div class="skd-message-text"><?php echo nl2br(esc_html($message->message_text)); ?></div>
-        <div class="skd-message-time">
-            <?php echo date('g:i A', strtotime($message->created_at)); ?>
-            <?php if ($is_sent): ?>
-            <span class="skd-message-status">
-                <?php echo $message->is_read ? '✓✓' : '✓'; ?>
-            </span>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>
+                    <div class="skd-message-content">
+                        <div class="skd-message-text"><?php echo nl2br(esc_html($message->message_text)); ?></div>
+                        <div class="skd-message-time">
+                            <?php echo date('g:i A', strtotime($message->created_at)); ?>
+                            <?php if ($is_sent): ?>
+                                <span class="skd-message-status">
+                                    <?php echo $message->is_read ? '✓✓' : '✓'; ?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
 <?php
             }
         }

@@ -92,26 +92,26 @@ $has_active_plan = false; // TODO: Check if user has active plan
         <div class="vda-profile-card">
             <div class="vda-avatar" id="sidebar-avatar">
                 <?php if (!empty($vda_profile->avatar_url)): ?>
-                <img src="<?php echo esc_url($vda_profile->avatar_url); ?>" alt="Profile" id="sidebar-avatar-img">
+                    <img src="<?php echo esc_url($vda_profile->avatar_url); ?>" alt="Profile" id="sidebar-avatar-img">
                 <?php else: ?>
-                <div class="vda-avatar-placeholder" id="sidebar-avatar-placeholder">
-                    <?php echo strtoupper(substr($user->display_name, 0, 2)); ?>
-                </div>
+                    <div class="vda-avatar-placeholder" id="sidebar-avatar-placeholder">
+                        <?php echo strtoupper(substr($user->display_name, 0, 2)); ?>
+                    </div>
                 <?php endif; ?>
                 <button type="button" class="vda-avatar-edit-btn" title="Edit Profile Picture">
                     <iconify-icon icon="material-symbols:edit"></iconify-icon>
                 </button>
                 <?php if ($vda_profile->is_verified): ?>
-                <span class="vda-verified-badge" title="Verified">
-                    <iconify-icon icon="material-symbols:verified"></iconify-icon>
-                </span>
+                    <span class="vda-verified-badge" title="Verified">
+                        <iconify-icon icon="material-symbols:verified"></iconify-icon>
+                    </span>
                 <?php endif; ?>
             </div>
             <!-- Hidden file input for avatar upload -->
             <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
-            <h4 title="<?php echo esc_attr($user->display_name); ?>"><?php echo esc_html($user->display_name); ?></h4>
+            <h3><?php echo esc_html($user->display_name); ?></h3>
             <?php if (!empty($vda_profile->tagline)): ?>
-            <p class="vda-tagline"><?php echo esc_html($vda_profile->tagline); ?></p>
+                <p class="vda-tagline"><?php echo esc_html($vda_profile->tagline); ?></p>
             <?php endif; ?>
 
             <div class="vda-profile-stats">
@@ -214,9 +214,9 @@ $has_active_plan = false; // TODO: Check if user has active plan
                     <div class="vda-progress-fill" style="width: <?php echo $profile_completeness; ?>%"></div>
                 </div>
                 <?php if ($profile_completeness < 100): ?>
-                <p class="vda-completion-tip">
-                    Complete your profile to increase visibility and get more opportunities!
-                </p>
+                    <p class="vda-completion-tip">
+                        Complete your profile to increase visibility and get more opportunities!
+                    </p>
                 <?php endif; ?>
             </div>
 
@@ -228,8 +228,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                         <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
                         <span>Edit Profile</span>
                     </a>
-                    <a href="<?php echo home_url('/vda-profile/?vda_id=' . $user_id); ?>" class="vda-action-card"
-                        target="_blank">
+                    <a href="<?php echo home_url('/vda-profile/?vda_id=' . $user_id); ?>" class="vda-action-card" target="_blank">
                         <iconify-icon icon="material-symbols:visibility-outline"></iconify-icon>
                         <span>View Public Profile</span>
                     </a>
@@ -238,7 +237,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                         <span>Browse Jobs</span>
                     </a>
                     <a href="#" class="vda-action-card" data-tab="profile" data-subtab="portfolio">
-                        <iconify-icon icon="cuida:upload-outline"></iconify-icon>
+                        <iconify-icon icon="material-symbols:upload-outline"></iconify-icon>
                         <span>Upload Portfolio</span>
                     </a>
                 </div>
@@ -343,41 +342,39 @@ $has_active_plan = false; // TODO: Check if user has active plan
                         foreach ($activities as $activity):
                             $time_ago = human_time_diff($activity['time'], current_time('timestamp')) . ' ago';
                     ?>
-                    <div class="vda-activity-item">
-                        <div class="vda-activity-icon" style="background: <?php echo $activity['bg']; ?>;">
-                            <iconify-icon icon="<?php echo $activity['icon']; ?>"
-                                style="color: <?php echo $activity['color']; ?>;"></iconify-icon>
-                        </div>
-                        <div class="vda-activity-content">
-                            <p><strong><?php echo $activity['title']; ?></strong></p>
-                            <span class="vda-activity-time"><?php echo $time_ago; ?></span>
-                        </div>
-                        <?php if (!empty($activity['badge'])): ?>
-                        <span class="vda-activity-badge <?php echo $activity['badge_class']; ?>">
-                            <?php echo $activity['badge']; ?>
-                        </span>
-                        <?php endif; ?>
-                    </div>
-                    <?php
+                            <div class="vda-activity-item">
+                                <div class="vda-activity-icon" style="background: <?php echo $activity['bg']; ?>;">
+                                    <iconify-icon icon="<?php echo $activity['icon']; ?>" style="color: <?php echo $activity['color']; ?>;"></iconify-icon>
+                                </div>
+                                <div class="vda-activity-content">
+                                    <p><strong><?php echo $activity['title']; ?></strong></p>
+                                    <span class="vda-activity-time"><?php echo $time_ago; ?></span>
+                                </div>
+                                <?php if (!empty($activity['badge'])): ?>
+                                    <span class="vda-activity-badge <?php echo $activity['badge_class']; ?>">
+                                        <?php echo $activity['badge']; ?>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        <?php
                         endforeach;
                     else:
                         ?>
-                    <div class="vda-empty-state">
-                        <iconify-icon icon="material-symbols:inbox-outline"></iconify-icon>
-                        <p>No recent activity</p>
-                        <a href="#" class="vda-btn vda-btn-primary vda-tip-action" data-tab="profile"
-                            data-subtab="portfolio">Add Portfolio</a>
-                    </div>
+                        <div class="vda-empty-state">
+                            <iconify-icon icon="material-symbols:inbox-outline"></iconify-icon>
+                            <p>No recent activity</p>
+                            <a href="#" class="vda-btn vda-btn-primary vda-tip-action" data-tab="profile" data-subtab="portfolio">Add Portfolio</a>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
 
             <!-- Profile Tips -->
             <?php if ($profile_completeness < 100): ?>
-            <div class="vda-profile-tips">
-                <h3>Complete Your Profile</h3>
-                <div class="vda-tips-list">
-                    <?php
+                <div class="vda-profile-tips">
+                    <h3>Complete Your Profile</h3>
+                    <div class="vda-tips-list">
+                        <?php
                         $tips = [];
                         if (empty($vda_profile->bio)) {
                             $tips[] = ['icon' => 'material-symbols:description-outline', 'text' => 'Add a professional bio', 'action' => 'profile', 'subtab' => 'basic'];
@@ -394,17 +391,16 @@ $has_active_plan = false; // TODO: Check if user has active plan
 
                         foreach ($tips as $tip):
                         ?>
-                    <div class="vda-tip-item">
-                        <iconify-icon icon="<?php echo $tip['icon']; ?>"></iconify-icon>
-                        <span><?php echo $tip['text']; ?></span>
-                        <button class="vda-btn vda-btn-secondary vda-btn-sm vda-tip-action"
-                            data-tab="<?php echo $tip['action']; ?>" data-subtab="<?php echo $tip['subtab']; ?>">
-                            Complete
-                        </button>
+                            <div class="vda-tip-item">
+                                <iconify-icon icon="<?php echo $tip['icon']; ?>"></iconify-icon>
+                                <span><?php echo $tip['text']; ?></span>
+                                <button class="vda-btn vda-btn-secondary vda-btn-sm vda-tip-action" data-tab="<?php echo $tip['action']; ?>" data-subtab="<?php echo $tip['subtab']; ?>">
+                                    Complete
+                                </button>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                    <?php endforeach; ?>
                 </div>
-            </div>
             <?php endif; ?>
         </div>
 
@@ -424,11 +420,9 @@ $has_active_plan = false; // TODO: Check if user has active plan
                 <div class="vda-profile-header">
                     <h1>Edit Your Profile</h1>
                     <div class="vda-profile-completeness-bar">
-                        <span>Profile Completeness:
-                            <strong><?php echo $profile->profile_completeness ?? 0; ?>%</strong></span>
+                        <span>Profile Completeness: <strong><?php echo $profile->profile_completeness ?? 0; ?>%</strong></span>
                         <div class="vda-progress-bar">
-                            <div class="vda-progress-fill"
-                                style="width: <?php echo $profile->profile_completeness ?? 0; ?>%"></div>
+                            <div class="vda-progress-fill" style="width: <?php echo $profile->profile_completeness ?? 0; ?>%"></div>
                         </div>
                     </div>
                 </div>
@@ -450,33 +444,25 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                 <div class="vda-form-row">
                                     <div class="vda-form-group">
                                         <label>First Name *</label>
-                                        <input type="text" name="first_name"
-                                            value="<?php echo esc_attr($user->first_name); ?>" required>
+                                        <input type="text" name="first_name" value="<?php echo esc_attr($user->first_name); ?>" required>
                                     </div>
                                     <div class="vda-form-group">
                                         <label>Last Name *</label>
-                                        <input type="text" name="last_name"
-                                            value="<?php echo esc_attr($user->last_name); ?>" required>
+                                        <input type="text" name="last_name" value="<?php echo esc_attr($user->last_name); ?>" required>
                                     </div>
                                 </div>
 
                                 <!-- Professional Tagline -->
                                 <div class="vda-form-group">
                                     <label>Professional Tagline *</label>
-                                    <input type="text" name="tagline"
-                                        value="<?php echo esc_attr($profile->tagline ?? ''); ?>"
-                                        placeholder="e.g., Expert 3D Rendering Specialist | Interior Design Visualizer"
-                                        required maxlength="100">
+                                    <input type="text" name="tagline" value="<?php echo esc_attr($profile->tagline ?? ''); ?>" placeholder="e.g., Expert 3D Rendering Specialist | Interior Design Visualizer" required maxlength="100">
                                     <small>This appears right below your name (max 100 characters)</small>
                                 </div>
 
                                 <!-- Short Description -->
                                 <div class="vda-form-group">
                                     <label>Short Description *</label>
-                                    <textarea name="short_description" rows="3"
-                                        placeholder="A brief overview of your expertise and what makes you unique..."
-                                        maxlength="300"
-                                        required><?php echo esc_textarea($profile->short_description ?? ''); ?></textarea>
+                                    <textarea name="short_description" rows="3" placeholder="A brief overview of your expertise and what makes you unique..." maxlength="300" required><?php echo esc_textarea($profile->short_description ?? ''); ?></textarea>
                                     <small>Brief summary shown in search results (max 300 characters)</small>
                                 </div>
 
@@ -572,9 +558,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                     </div>
                                     <div class="vda-form-group">
                                         <label>City *</label>
-                                        <input type="text" name="city"
-                                            value="<?php echo esc_attr($profile->city ?? ''); ?>"
-                                            placeholder="e.g., New York" required>
+                                        <input type="text" name="city" value="<?php echo esc_attr($profile->city ?? ''); ?>" placeholder="e.g., New York" required>
                                     </div>
                                 </div>
 
@@ -614,8 +598,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                         }
                                         ?>
                                     </select>
-                                    <small>Select the software and design skills you're proficient in (e.g., SketchUp,
-                                        V-Ray, AutoCAD, 3ds Max)</small>
+                                    <small>Select the software and design skills you're proficient in (e.g., SketchUp, V-Ray, AutoCAD, 3ds Max)</small>
                                 </div>
 
                                 <div class="vda-form-group">
@@ -629,8 +612,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                         }
                                         ?>
                                     </select>
-                                    <small>Select your areas of specialization (e.g., Residential Design, Commercial
-                                        Spaces, 3D Rendering)</small>
+                                    <small>Select your areas of specialization (e.g., Residential Design, Commercial Spaces, 3D Rendering)</small>
                                 </div>
 
                                 <div class="vda-form-group">
@@ -644,8 +626,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                         }
                                         ?>
                                     </select>
-                                    <small>Select the types of projects you work on (e.g., Residential, Commercial,
-                                        Hospitality)</small>
+                                    <small>Select the types of projects you work on (e.g., Residential, Commercial, Hospitality)</small>
                                 </div>
 
                                 <div class="vda-form-group">
@@ -659,8 +640,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                         }
                                         ?>
                                     </select>
-                                    <small>Select the specific services you offer (e.g., CAD Drafting, 3D Rendering,
-                                        Space Planning)</small>
+                                    <small>Select the specific services you offer (e.g., CAD Drafting, 3D Rendering, Space Planning)</small>
                                 </div>
 
                                 <button type="submit" class="vda-btn vda-btn-primary">
@@ -693,9 +673,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                 <div class="vda-form-row">
                                     <div class="vda-form-group">
                                         <label>Hourly Rate (USD) *</label>
-                                        <input type="number" name="hourly_rate"
-                                            value="<?php echo esc_attr($profile->hourly_rate ?? ''); ?>" step="0.01"
-                                            min="0" placeholder="e.g., 25.00" required>
+                                        <input type="number" name="hourly_rate" value="<?php echo esc_attr($profile->hourly_rate ?? ''); ?>" step="0.01" min="0" placeholder="e.g., 25.00" required>
                                         <small>Your standard hourly rate in US Dollars</small>
                                     </div>
                                     <div class="vda-form-group">
@@ -719,9 +697,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                 <div class="vda-form-row">
                                     <div class="vda-form-group">
                                         <label>Years of Experience *</label>
-                                        <input type="number" name="years_experience" id="years_experience"
-                                            value="<?php echo esc_attr($profile->years_experience ?? ''); ?>" min="0"
-                                            max="50" placeholder="e.g., 5" required>
+                                        <input type="number" name="years_experience" id="years_experience" value="<?php echo esc_attr($profile->years_experience ?? ''); ?>" min="0" max="50" placeholder="e.g., 5" required>
                                         <small>Total years of professional experience</small>
                                     </div>
                                     <div class="vda-form-group">
@@ -739,8 +715,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                                                                                         echo 'Not set';
                                                                                                     }
                                                                                                 }
-                                                                                                ?>" readonly
-                                            style="background: #f5f5f5; cursor: not-allowed;">
+                                                                                                ?>" readonly style="background: #f5f5f5; cursor: not-allowed;">
                                         <small>Auto-calculated based on years of experience</small>
                                     </div>
                                 </div>
@@ -764,8 +739,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                     </div>
                                     <div class="vda-form-group">
                                         <label>Languages Spoken *</label>
-                                        <select name="languages_spoken[]" multiple class="vda-select2-languages"
-                                            style="width: 100%" required>
+                                        <select name="languages_spoken[]" multiple class="vda-select2-languages" style="width: 100%" required>
                                             <?php
                                             $all_languages = SKD_PL_Languages::get_languages(['status' => 'active']);
                                             $user_languages = json_decode($profile->languages_spoken ?? '[]', true) ?: [];
@@ -812,10 +786,9 @@ $has_active_plan = false; // TODO: Check if user has active plan
                             ?>
 
                             <div class="vda-certifications-section">
-                                <div class="vda-section-header vda-section-header-flexColumn">
+                                <div class="vda-section-header">
                                     <h3>Professional Certifications & Badges</h3>
-                                    <p style="color: #666; margin-top: 8px;">Add and manage your professional
-                                        certifications to build trust and showcase your expertise.</p>
+                                    <p style="color: #666; margin-top: 8px;">Add and manage your professional certifications to build trust and showcase your expertise.</p>
                                 </div>
 
                                 <div class="vda-certifications-grid">
@@ -824,77 +797,66 @@ $has_active_plan = false; // TODO: Check if user has active plan
                                         $user_cert = $user_has_cert ? $user_cert_map[$cert->id] : null;
                                         $status = $user_cert ? $user_cert->status : 'not-added';
                                     ?>
-                                    <div class="vda-cert-card <?php echo $user_has_cert ? 'has-cert' : ''; ?>"
-                                        data-cert-id="<?php echo $cert->id; ?>">
-                                        <div class="vda-cert-badge">
-                                            <?php if ($cert->badge_image_url): ?>
-                                            <img src="<?php echo esc_url($cert->badge_image_url); ?>"
-                                                alt="<?php echo esc_attr($cert->name); ?>">
-                                            <?php else: ?>
-                                            <iconify-icon icon="mdi:certificate"
-                                                style="font-size: 48px; color: #667eea;"></iconify-icon>
-                                            <?php endif; ?>
-                                        </div>
+                                        <div class="vda-cert-card <?php echo $user_has_cert ? 'has-cert' : ''; ?>" data-cert-id="<?php echo $cert->id; ?>">
+                                            <div class="vda-cert-badge">
+                                                <?php if ($cert->badge_image_url): ?>
+                                                    <img src="<?php echo esc_url($cert->badge_image_url); ?>" alt="<?php echo esc_attr($cert->name); ?>">
+                                                <?php else: ?>
+                                                    <iconify-icon icon="mdi:certificate" style="font-size: 48px; color: #667eea;"></iconify-icon>
+                                                <?php endif; ?>
+                                            </div>
 
-                                        <div class="vda-cert-info">
-                                            <h4><?php echo esc_html($cert->name); ?></h4>
-                                            <?php if ($cert->issuer): ?>
-                                            <p class="vda-cert-issuer">Issued by: <?php echo esc_html($cert->issuer); ?>
-                                            </p>
-                                            <?php endif; ?>
-                                            <?php if ($cert->description): ?>
-                                            <p class="vda-cert-desc"><?php echo esc_html($cert->description); ?></p>
-                                            <?php endif; ?>
-                                        </div>
+                                            <div class="vda-cert-info">
+                                                <h4><?php echo esc_html($cert->name); ?></h4>
+                                                <?php if ($cert->issuer): ?>
+                                                    <p class="vda-cert-issuer">Issued by: <?php echo esc_html($cert->issuer); ?></p>
+                                                <?php endif; ?>
+                                                <?php if ($cert->description): ?>
+                                                    <p class="vda-cert-desc"><?php echo esc_html($cert->description); ?></p>
+                                                <?php endif; ?>
+                                            </div>
 
-                                        <div class="vda-cert-status">
-                                            <?php if ($status === 'approved'): ?>
-                                            <span class="vda-badge vda-badge-success">
-                                                <iconify-icon icon="mdi:check-circle"></iconify-icon> Verified
-                                            </span>
-                                            <?php elseif ($status === 'pending'): ?>
-                                            <span class="vda-badge vda-badge-warning">
-                                                <iconify-icon icon="mdi:clock"></iconify-icon> Pending Review
-                                            </span>
-                                            <?php elseif ($status === 'rejected'): ?>
-                                            <span class="vda-badge vda-badge-danger">
-                                                <iconify-icon icon="mdi:close-circle"></iconify-icon> Rejected
-                                            </span>
-                                            <?php endif; ?>
-                                        </div>
+                                            <div class="vda-cert-status">
+                                                <?php if ($status === 'approved'): ?>
+                                                    <span class="vda-badge vda-badge-success">
+                                                        <iconify-icon icon="mdi:check-circle"></iconify-icon> Verified
+                                                    </span>
+                                                <?php elseif ($status === 'pending'): ?>
+                                                    <span class="vda-badge vda-badge-warning">
+                                                        <iconify-icon icon="mdi:clock"></iconify-icon> Pending Review
+                                                    </span>
+                                                <?php elseif ($status === 'rejected'): ?>
+                                                    <span class="vda-badge vda-badge-danger">
+                                                        <iconify-icon icon="mdi:close-circle"></iconify-icon> Rejected
+                                                    </span>
+                                                <?php endif; ?>
+                                            </div>
 
-                                        <div class="vda-cert-actions">
-                                            <?php if (!$user_has_cert): ?>
-                                            <button type="button"
-                                                class="vda-btn vda-btn-sm vda-btn-outline add-cert-btn"
-                                                data-cert-id="<?php echo $cert->id; ?>"
-                                                data-requires-verification="<?php echo $cert->verification_required; ?>">
-                                                <iconify-icon icon="mdi:plus"></iconify-icon> Add Certification
-                                            </button>
-                                            <?php else: ?>
-                                            <?php if ($user_cert->certificate_file): ?>
-                                            <a href="<?php echo esc_url($user_cert->certificate_file); ?>"
-                                                target="_blank" class="vda-btn vda-btn-sm vda-btn-outline">
-                                                <iconify-icon icon="mdi:file-document"></iconify-icon> View Certificate
-                                            </a>
-                                            <?php endif; ?>
-                                            <?php if ($cert->verification_required && $status !== 'approved'): ?>
-                                            <button type="button"
-                                                class="vda-btn vda-btn-sm vda-btn-outline edit-cert-btn"
-                                                data-user-cert-id="<?php echo $user_cert->id; ?>"
-                                                data-notes="<?php echo esc_attr($user_cert->notes ?? ''); ?>"
-                                                data-cert-file="<?php echo esc_url($user_cert->certificate_file ?? ''); ?>">
-                                                <iconify-icon icon="mdi:pencil"></iconify-icon> Edit
-                                            </button>
-                                            <?php endif; ?>
-                                            <button type="button"
-                                                class="vda-btn vda-btn-sm vda-btn-danger remove-cert-btn"
-                                                data-user-cert-id="<?php echo $user_cert->id; ?>">
-                                                <iconify-icon icon="mdi:delete"></iconify-icon> Remove
-                                            </button>
-                                            <?php endif; ?>
+                                            <div class="vda-cert-actions">
+                                                <?php if (!$user_has_cert): ?>
+                                                    <button type="button" class="vda-btn vda-btn-sm vda-btn-outline add-cert-btn" data-cert-id="<?php echo $cert->id; ?>" data-requires-verification="<?php echo $cert->verification_required; ?>">
+                                                        <iconify-icon icon="mdi:plus"></iconify-icon> Add Certification
+                                                    </button>
+                                                <?php else: ?>
+                                                    <?php if ($user_cert->certificate_file): ?>
+                                                        <a href="<?php echo esc_url($user_cert->certificate_file); ?>" target="_blank" class="vda-btn vda-btn-sm vda-btn-outline">
+                                                            <iconify-icon icon="mdi:file-document"></iconify-icon> View Certificate
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <?php if ($cert->verification_required && $status !== 'approved'): ?>
+                                                        <button type="button" class="vda-btn vda-btn-sm vda-btn-outline edit-cert-btn"
+                                                            data-user-cert-id="<?php echo $user_cert->id; ?>"
+                                                            data-notes="<?php echo esc_attr($user_cert->notes ?? ''); ?>"
+                                                            data-cert-file="<?php echo esc_url($user_cert->certificate_file ?? ''); ?>">
+                                                            <iconify-icon icon="mdi:pencil"></iconify-icon> Edit
+                                                        </button>
+                                                    <?php endif; ?>
+                                                    <button type="button" class="vda-btn vda-btn-sm vda-btn-danger remove-cert-btn" data-user-cert-id="<?php echo $user_cert->id; ?>">
+                                                        <iconify-icon icon="mdi:delete"></iconify-icon> Remove
+                                                    </button>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
-                                    </div>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -915,24 +877,20 @@ $has_active_plan = false; // TODO: Check if user has active plan
             <div class="vda-settings-wrapper">
                 <!-- Change Password Section -->
                 <div class="vda-settings-card">
-                    <h3>
-                        <iconify-icon icon="material-symbols:lock-outline"></iconify-icon> Change Password
-                    </h3>
+                    <h3><iconify-icon icon="material-symbols:lock-outline"></iconify-icon> Change Password</h3>
                     <form id="change-password-form" class="vda-settings-form">
                         <div class="vda-form-group vda-password-field">
                             <label for="current_password">Current Password *</label>
                             <div class="vda-password-wrapper">
                                 <input type="password" id="current_password" name="current_password">
-                                <iconify-icon icon="mdi:eye-off" class="vda-password-toggle"
-                                    onclick="togglePassword('current_password')"></iconify-icon>
+                                <iconify-icon icon="mdi:eye-off" class="vda-password-toggle" onclick="togglePassword('current_password')"></iconify-icon>
                             </div>
                         </div>
                         <div class="vda-form-group vda-password-field">
                             <label for="new_password">New Password *</label>
                             <div class="vda-password-wrapper">
                                 <input type="password" id="new_password" name="new_password">
-                                <iconify-icon icon="mdi:eye-off" class="vda-password-toggle"
-                                    onclick="togglePassword('new_password')"></iconify-icon>
+                                <iconify-icon icon="mdi:eye-off" class="vda-password-toggle" onclick="togglePassword('new_password')"></iconify-icon>
                             </div>
                             <small>Minimum 8 characters</small>
                         </div>
@@ -940,8 +898,7 @@ $has_active_plan = false; // TODO: Check if user has active plan
                             <label for="confirm_password">Confirm New Password *</label>
                             <div class="vda-password-wrapper">
                                 <input type="password" id="confirm_password" name="confirm_password">
-                                <iconify-icon icon="mdi:eye-off" class="vda-password-toggle"
-                                    onclick="togglePassword('confirm_password')"></iconify-icon>
+                                <iconify-icon icon="mdi:eye-off" class="vda-password-toggle" onclick="togglePassword('confirm_password')"></iconify-icon>
                             </div>
                         </div>
                         <button type="submit" class="vda-btn vda-btn-primary">
@@ -953,37 +910,30 @@ $has_active_plan = false; // TODO: Check if user has active plan
 
                 <!-- Account Information -->
                 <div class="vda-settings-card">
-                    <h3>
-                        <iconify-icon icon="material-symbols:person-outline"></iconify-icon> Account Information
-                    </h3>
+                    <h3><iconify-icon icon="material-symbols:person-outline"></iconify-icon> Account Information</h3>
                     <form id="account-info-form" class="vda-settings-form">
                         <div class="vda-form-group">
                             <label for="account_email">Email Address</label>
-                            <input type="email" id="account_email" name="email"
-                                value="<?php echo esc_attr($user->user_email); ?>" readonly>
+                            <input type="email" id="account_email" name="email" value="<?php echo esc_attr($user->user_email); ?>" readonly>
                             <small>Contact admin to change your email address</small>
                         </div>
                         <div class="vda-form-row">
                             <div class="vda-form-group">
                                 <label for="account_first_name">First Name *</label>
-                                <input type="text" id="account_first_name" name="first_name"
-                                    value="<?php echo esc_attr($user->first_name); ?>">
+                                <input type="text" id="account_first_name" name="first_name" value="<?php echo esc_attr($user->first_name); ?>">
                             </div>
                             <div class="vda-form-group">
                                 <label for="account_last_name">Last Name *</label>
-                                <input type="text" id="account_last_name" name="last_name"
-                                    value="<?php echo esc_attr($user->last_name); ?>">
+                                <input type="text" id="account_last_name" name="last_name" value="<?php echo esc_attr($user->last_name); ?>">
                             </div>
                         </div>
                         <div class="vda-form-group">
                             <label for="account_display_name">Display Name *</label>
-                            <input type="text" id="account_display_name" name="display_name"
-                                value="<?php echo esc_attr($user->display_name); ?>">
+                            <input type="text" id="account_display_name" name="display_name" value="<?php echo esc_attr($user->display_name); ?>">
                         </div>
                         <div class="vda-form-group">
                             <label for="account_phone">Phone Number</label>
-                            <input type="tel" id="account_phone" name="phone"
-                                value="<?php echo esc_attr(get_user_meta($user_id, 'phone', true)); ?>">
+                            <input type="tel" id="account_phone" name="phone" value="<?php echo esc_attr(get_user_meta($user_id, 'phone', true)); ?>">
                         </div>
                         <button type="submit" class="vda-btn vda-btn-primary">
                             <iconify-icon icon="material-symbols:save-outline"></iconify-icon>
@@ -1022,36 +972,33 @@ $has_active_plan = false; // TODO: Check if user has active plan
 <!-- Add/Edit Portfolio Modal -->
 <div id="portfolio-modal" class="vda-modal" style="display: none;">
     <div class="vda-modal-content vda-modal-large">
-        <span class="vda-modal-close">
-            <iconify-icon icon="codex:cross"></iconify-icon>
-        </span>
-        <h3 id="portfolio-modal-title">Add Portfolio Item</h3>
+        <span class="vda-modal-close">&times;</span>
+        <h2 id="portfolio-modal-title">Add Portfolio Item</h2>
 
         <form id="portfolio-form" enctype="multipart/form-data">
             <input type="hidden" id="portfolio-id" name="id" value="">
-            <div class="vdaNew-modal_body">
-                <div class="vda-form-group">
-                    <label for="portfolio-title">Project Title *</label>
-                    <input type="text" id="portfolio-title" name="title" class="vda-input" required
-                        placeholder="e.g., Modern Living Room Design">
-                </div>
 
-                <div class="vda-form-group">
-                    <label for="portfolio-category">Category *</label>
-                    <select id="portfolio-category" name="category_id" class="vda-input" required>
-                        <option value="">Select Category</option>
-                        <?php if (!empty($portfolio_categories)): ?>
+            <div class="vda-form-group">
+                <label for="portfolio-title">Project Title *</label>
+                <input type="text" id="portfolio-title" name="title" class="vda-input" required placeholder="e.g., Modern Living Room Design">
+            </div>
+
+            <div class="vda-form-group">
+                <label for="portfolio-category">Category *</label>
+                <select id="portfolio-category" name="category_id" class="vda-input" required>
+                    <option value="">Select Category</option>
+                    <?php if (!empty($portfolio_categories)): ?>
                         <?php foreach ($portfolio_categories as $cat): ?>
-                        <option value="<?php echo esc_attr($cat->id); ?>"><?php echo esc_html($cat->name); ?></option>
+                            <option value="<?php echo esc_attr($cat->id); ?>"><?php echo esc_html($cat->name); ?></option>
                         <?php endforeach; ?>
-                        <?php endif; ?>
-                    </select>
-                </div>
+                    <?php endif; ?>
+                </select>
+            </div>
 
-                <div class="vda-form-group">
-                    <label for="portfolio-description">Description</label>
-                    <div id="portfolio-description-editor-container">
-                        <?php
+            <div class="vda-form-group">
+                <label for="portfolio-description">Description</label>
+                <div id="portfolio-description-editor-container">
+                    <?php
                     wp_editor('', 'portfolio_description', array(
                         'textarea_name' => 'description',
                         'textarea_rows' => 8,
@@ -1065,44 +1012,39 @@ $has_active_plan = false; // TODO: Check if user has active plan
                         )
                     ));
                     ?>
-                    </div>
-                    <small>Describe the project, design approach, materials used, challenges overcome, etc.</small>
                 </div>
+                <small>Describe the project, design approach, materials used, challenges overcome, etc.</small>
+            </div>
 
-                <div class="vda-form-group">
-                    <label for="portfolio-tags">Tags</label>
-                    <input type="text" id="portfolio-tags" class="vda-input"
-                        placeholder="Enter tags separated by commas (e.g., 3D Rendering, Modern, Residential)">
-                    <small>Separate tags with commas. These help clients find your work.</small>
+            <div class="vda-form-group">
+                <label for="portfolio-tags">Tags</label>
+                <input type="text" id="portfolio-tags" class="vda-input" placeholder="Enter tags separated by commas (e.g., 3D Rendering, Modern, Residential)">
+                <small>Separate tags with commas. These help clients find your work.</small>
+            </div>
+
+            <div class="vda-form-group">
+                <label for="portfolio-images">Project Images *</label>
+                <input type="file" id="portfolio-images" name="images[]" class="vda-input" accept="image/*" multiple>
+                <input type="hidden" id="existing-images" name="existing_images" value="">
+                <input type="hidden" id="deleted-images" name="deleted_images" value="">
+                <small>Upload multiple images (Max 1MB per image). First image will be the featured image.</small>
+
+                <div id="image-preview-grid" class="vda-image-preview-grid" style="margin-top: 15px; display: none;">
+                    <!-- Image previews will appear here -->
                 </div>
+            </div>
 
-                <div class="vda-form-group">
-                    <label for="portfolio-images">Project Images *</label>
-                    <input type="file" id="portfolio-images" name="images[]" class="vda-input" accept="image/*"
-                        multiple>
-                    <input type="hidden" id="existing-images" name="existing_images" value="">
-                    <input type="hidden" id="deleted-images" name="deleted_images" value="">
-                    <small>Upload multiple images (Max 1MB per image). First image will be the featured image.</small>
+            <div class="vda-form-group">
+                <label for="portfolio-year">Year Completed</label>
+                <input type="number" id="portfolio-year" name="year" class="vda-input" min="2000" max="<?php echo date('Y'); ?>" placeholder="<?php echo date('Y'); ?>">
+            </div>
 
-                    <div id="image-preview-grid" class="vda-image-preview-grid"
-                        style="margin-top: 15px; display: none;">
-                        <!-- Image previews will appear here -->
-                    </div>
-                </div>
-
-                <div class="vda-form-group">
-                    <label for="portfolio-year">Year Completed</label>
-                    <input type="number" id="portfolio-year" name="year" class="vda-input" min="2000"
-                        max="<?php echo date('Y'); ?>" placeholder="<?php echo date('Y'); ?>">
-                </div>
-
-                <div class="vda-modal-actions">
-                    <button type="submit" class="vda-btn vda-btn-primary">
-                        <iconify-icon icon="material-symbols:save-outline"></iconify-icon>
-                        Save Portfolio Item
-                    </button>
-                    <button type="button" class="vda-btn vda-btn-outline" id="cancel-portfolio">Cancel</button>
-                </div>
+            <div class="vda-modal-actions">
+                <button type="submit" class="vda-btn vda-btn-primary">
+                    <iconify-icon icon="material-symbols:save-outline"></iconify-icon>
+                    Save Portfolio Item
+                </button>
+                <button type="button" class="vda-btn vda-btn-outline" id="cancel-portfolio">Cancel</button>
             </div>
         </form>
     </div>
@@ -1119,38 +1061,87 @@ $has_active_plan = false; // TODO: Check if user has active plan
 </div>
 
 <script>
-// Toggle password visibility function
-window.togglePassword = function(fieldId) {
-    const field = document.getElementById(fieldId);
-    const icon = field.nextElementSibling;
-    if (field.type === 'password') {
-        field.type = 'text';
-        icon.setAttribute('icon', 'mdi:eye');
-    } else {
-        field.type = 'password';
-        icon.setAttribute('icon', 'mdi:eye-off');
-    }
-};
-jQuery(document).ready(function($) {
-    let nonce = '<?php echo wp_create_nonce("skd_ajax_nonce"); ?>';
+    // Toggle password visibility function
+    window.togglePassword = function(fieldId) {
+        const field = document.getElementById(fieldId);
+        const icon = field.nextElementSibling;
+        if (field.type === 'password') {
+            field.type = 'text';
+            icon.setAttribute('icon', 'mdi:eye');
+        } else {
+            field.type = 'password';
+            icon.setAttribute('icon', 'mdi:eye-off');
+        }
+    };
+    jQuery(document).ready(function($) {
+        let nonce = '<?php echo wp_create_nonce("skd_ajax_nonce"); ?>';
 
-    // Main tab switching (Dashboard, Profile, Settings)
-    $('.vda-menu-item').click(function(e) {
-        e.preventDefault();
-        if ($(this).hasClass('vda-logout')) return;
+        // Main tab switching (Dashboard, Profile, Settings)
+        $('.vda-menu-item').click(function(e) {
+            e.preventDefault();
+            if ($(this).hasClass('vda-logout')) return;
 
-        const tab = $(this).data('tab');
-        $('.vda-menu-item').removeClass('active');
-        $(this).addClass('active');
-        $('.vda-tab-content').removeClass('active');
-        $('#tab-' + tab).addClass('active');
+            const tab = $(this).data('tab');
+            $('.vda-menu-item').removeClass('active');
+            $(this).addClass('active');
+            $('.vda-tab-content').removeClass('active');
+            $('#tab-' + tab).addClass('active');
 
-        // If navigating to Profile tab, go to Basic Info subtab
-        if (tab === 'profile') {
+            // If navigating to Profile tab, go to Basic Info subtab
+            if (tab === 'profile') {
+                $('.vda-tab-btn').removeClass('active');
+                $('.vda-tab-btn[data-tab="basic"]').addClass('active');
+                $('.vda-profile-tab-pane').removeClass('active');
+                $('#profile-tab-basic').addClass('active');
+
+                // Scroll to top of content area
+                setTimeout(function() {
+                    $('.vda-main-content').animate({
+                        scrollTop: 0
+                    }, 400);
+                }, 100);
+            }
+        });
+
+        // Profile sub-tabs switching
+        $('.vda-tab-btn').click(function(e) {
+            e.preventDefault();
+            const tab = $(this).data('tab');
             $('.vda-tab-btn').removeClass('active');
-            $('.vda-tab-btn[data-tab="basic"]').addClass('active');
+            $(this).addClass('active');
             $('.vda-profile-tab-pane').removeClass('active');
-            $('#profile-tab-basic').addClass('active');
+            $('#profile-tab-' + tab).addClass('active');
+        });
+
+        // Avatar edit button click - trigger file upload
+        $('.vda-avatar-edit-btn').on('click', function() {
+            $('#avatar-upload').click();
+        });
+
+        // Quick Action cards with data-tab navigation
+        $('.vda-action-card[data-tab]').on('click', function(e) {
+            e.preventDefault();
+            const tab = $(this).data('tab');
+            const subtab = $(this).data('subtab');
+
+            // Switch to main tab
+            $('.vda-menu-item').removeClass('active');
+            $('.vda-menu-item[data-tab="' + tab + '"]').addClass('active');
+            $('.vda-tab-content').removeClass('active');
+            $('#tab-' + tab).addClass('active');
+
+            // Switch to subtab if specified
+            if (subtab) {
+                $('.vda-tab-btn').removeClass('active');
+                $('.vda-tab-btn[data-tab="' + subtab + '"]').addClass('active');
+                $('.vda-profile-tab-pane').removeClass('active');
+                $('#profile-tab-' + subtab).addClass('active');
+
+                // Load portfolio if navigating to portfolio tab
+                if (subtab === 'portfolio') {
+                    setTimeout(loadPortfolioItems, 300);
+                }
+            }
 
             // Scroll to top of content area
             setTimeout(function() {
@@ -1158,493 +1149,434 @@ jQuery(document).ready(function($) {
                     scrollTop: 0
                 }, 400);
             }, 100);
-        }
-    });
-
-    // Profile sub-tabs switching
-    $('.vda-tab-btn').click(function(e) {
-        e.preventDefault();
-        const tab = $(this).data('tab');
-        $('.vda-tab-btn').removeClass('active');
-        $(this).addClass('active');
-        $('.vda-profile-tab-pane').removeClass('active');
-        $('#profile-tab-' + tab).addClass('active');
-    });
-
-    // Avatar edit button click - trigger file upload
-    $('.vda-avatar-edit-btn').on('click', function() {
-        $('#avatar-upload').click();
-    });
-
-    // Quick Action cards with data-tab navigation
-    $('.vda-action-card[data-tab]').on('click', function(e) {
-        e.preventDefault();
-        const tab = $(this).data('tab');
-        const subtab = $(this).data('subtab');
-
-        // Switch to main tab
-        $('.vda-menu-item').removeClass('active');
-        $('.vda-menu-item[data-tab="' + tab + '"]').addClass('active');
-        $('.vda-tab-content').removeClass('active');
-        $('#tab-' + tab).addClass('active');
-
-        // Switch to subtab if specified
-        if (subtab) {
-            $('.vda-tab-btn').removeClass('active');
-            $('.vda-tab-btn[data-tab="' + subtab + '"]').addClass('active');
-            $('.vda-profile-tab-pane').removeClass('active');
-            $('#profile-tab-' + subtab).addClass('active');
-
-            // Load portfolio if navigating to portfolio tab
-            if (subtab === 'portfolio') {
-                setTimeout(loadPortfolioItems, 300);
-            }
-        }
-
-        // Scroll to top of content area
-        setTimeout(function() {
-            $('.vda-main-content').animate({
-                scrollTop: 0
-            }, 400);
-        }, 100);
-    });
-
-    // Complete Your Profile tip actions
-    $('.vda-tip-action').on('click', function(e) {
-        e.preventDefault();
-        const tab = $(this).data('tab');
-        const subtab = $(this).data('subtab');
-
-        // Switch to main tab
-        $('.vda-menu-item').removeClass('active');
-        $('.vda-menu-item[data-tab="' + tab + '"]').addClass('active');
-        $('.vda-tab-content').removeClass('active');
-        $('#tab-' + tab).addClass('active');
-
-        // Switch to subtab if specified
-        if (subtab) {
-            $('.vda-tab-btn').removeClass('active');
-            $('.vda-tab-btn[data-tab="' + subtab + '"]').addClass('active');
-            $('.vda-profile-tab-pane').removeClass('active');
-            $('#profile-tab-' + subtab).addClass('active');
-
-            // Load portfolio if navigating to portfolio tab
-            if (subtab === 'portfolio') {
-                setTimeout(loadPortfolioItems, 300);
-            }
-        }
-
-        // Scroll to top of content area
-        setTimeout(function() {
-            $('.vda-main-content').animate({
-                scrollTop: 0
-            }, 400);
-        }, 100);
-    }); // Initialize Select2 for multi-selects
-    if (typeof $.fn.select2 !== 'undefined') {
-        $('.vda-select2').select2({
-            placeholder: 'Select from available options',
-            allowClear: true
         });
 
-        // Initialize Select2 for languages (only from database)
-        $('.vda-select2-languages').select2({
-            placeholder: 'Select languages',
-            allowClear: true
-        });
-    }
+        // Complete Your Profile tip actions
+        $('.vda-tip-action').on('click', function(e) {
+            e.preventDefault();
+            const tab = $(this).data('tab');
+            const subtab = $(this).data('subtab');
 
-    // Auto-calculate experience level based on years (using dynamic levels from database)
-    const experienceLevels =
-        <?php echo json_encode(SKD_PL_Experience_Levels::get_experience_levels(['status' => 'active'])); ?>;
+            // Switch to main tab
+            $('.vda-menu-item').removeClass('active');
+            $('.vda-menu-item[data-tab="' + tab + '"]').addClass('active');
+            $('.vda-tab-content').removeClass('active');
+            $('#tab-' + tab).addClass('active');
 
-    $('#years_experience').on('input change', function() {
-        const years = parseInt($(this).val()) || 0;
-        let level = 'Not set';
+            // Switch to subtab if specified
+            if (subtab) {
+                $('.vda-tab-btn').removeClass('active');
+                $('.vda-tab-btn[data-tab="' + subtab + '"]').addClass('active');
+                $('.vda-profile-tab-pane').removeClass('active');
+                $('#profile-tab-' + subtab).addClass('active');
 
-        if (years > 0) {
-            for (let i = 0; i < experienceLevels.length; i++) {
-                const expLevel = experienceLevels[i];
-                const minYears = parseInt(expLevel.years_min) || 0;
-                const maxYears = expLevel.years_max ? parseInt(expLevel.years_max) : null;
-
-                if (years >= minYears && (maxYears === null || years <= maxYears)) {
-                    const range = maxYears ? minYears + '-' + maxYears : minYears + '+';
-                    level = expLevel.name + ' (' + range + ' years)';
-                    break;
+                // Load portfolio if navigating to portfolio tab
+                if (subtab === 'portfolio') {
+                    setTimeout(loadPortfolioItems, 300);
                 }
             }
-        }
 
-        $('#experience_level_display').val(level);
-    });
-
-    // Basic Info Form
-    $('#basic-info-form').on('submit', function(e) {
-        e.preventDefault();
-
-        // Check if form is valid
-        if (!$(this).valid()) {
-            return false;
-        }
-
-        // Trigger TinyMCE save to update textareas
-        if (typeof tinyMCE !== 'undefined') {
-            tinyMCE.triggerSave();
-        }
-
-        const formData = new FormData(this);
-        formData.append('action', 'skd_update_profile_basic');
-        formData.append('nonce', nonce);
-
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            beforeSend: function() {
-                Swal.fire({
-                    title: 'Saving...',
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-            },
-            success: function(response) {
-                if (response.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Saved!',
-                        text: 'Basic information updated successfully',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                    // Update sidebar display name if changed
-                    if (response.data.display_name) {
-                        $('.vda-profile-card h3').text(response.data.display_name);
-                    }
-                    // Update tagline in sidebar if changed
-                    if (response.data.tagline) {
-                        $('.vda-tagline').text(response.data.tagline);
-                    }
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: response.data.message || 'Failed to update'
-                    });
-                }
-            }
-        });
-    });
-
-    // Skills & Specializations Form
-    $('#skills-services-form').on('submit', function(e) {
-        e.preventDefault();
-
-        // Check if form is valid
-        if (!$(this).valid()) {
-            return false;
-        }
-
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'skd_update_profile_skills',
-                nonce: nonce,
-                skills: $('select[name="skills[]"]').val(),
-                specializations: $('select[name="specializations[]"]').val(),
-                project_types: $('select[name="project_types[]"]').val(),
-                service_types: $('select[name="service_types[]"]').val()
-            },
-            beforeSend: function() {
-                Swal.fire({
-                    title: 'Saving...',
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-            },
-            success: function(response) {
-                if (response.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Saved!',
-                        text: 'Skills and specializations updated successfully',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: response.data.message || 'Failed to update'
-                    });
-                }
-            }
-        });
-    });
-
-    // Rates Form
-    $('#rates-form').on('submit', function(e) {
-        e.preventDefault();
-
-        // Check if form is valid
-        if (!$(this).valid()) {
-            return false;
-        }
-
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'skd_update_profile_rates',
-                nonce: nonce,
-                hourly_rate: $('input[name="hourly_rate"]').val(),
-                availability_status: $('select[name="availability_status"]').val(),
-                years_experience: $('input[name="years_experience"]').val(),
-                response_time: $('select[name="response_time"]').val(),
-                languages_spoken: $('select[name="languages_spoken[]"]').val()
-            },
-            beforeSend: function() {
-                Swal.fire({
-                    title: 'Saving...',
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-            },
-            success: function(response) {
-                if (response.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Saved!',
-                        text: 'Rates and availability updated successfully',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: response.data.message || 'Failed to update'
-                    });
-                }
-            }
-        });
-    });
-
-    // ============================================
-    // AVATAR UPLOAD FUNCTIONALITY
-    // ============================================
-
-    $('#avatar-upload').on('change', function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        // Validate file type
-        if (!file.type.startsWith('image/')) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Invalid File',
-                text: 'Please select an image file'
+            // Scroll to top of content area
+            setTimeout(function() {
+                $('.vda-main-content').animate({
+                    scrollTop: 0
+                }, 400);
+            }, 100);
+        }); // Initialize Select2 for multi-selects
+        if (typeof $.fn.select2 !== 'undefined') {
+            $('.vda-select2').select2({
+                placeholder: 'Select from available options',
+                allowClear: true
             });
-            return;
-        }
 
-        // Validate file size (2MB max)
-        if (file.size > 2 * 1024 * 1024) {
-            Swal.fire({
-                icon: 'error',
-                title: 'File Too Large',
-                text: 'Image must be less than 2MB'
+            // Initialize Select2 for languages (only from database)
+            $('.vda-select2-languages').select2({
+                placeholder: 'Select languages',
+                allowClear: true
             });
-            return;
         }
 
-        // Upload image
-        const formData = new FormData();
-        formData.append('action', 'skd_upload_avatar');
-        formData.append('nonce', nonce);
-        formData.append('avatar', file);
+        // Auto-calculate experience level based on years (using dynamic levels from database)
+        const experienceLevels = <?php echo json_encode(SKD_PL_Experience_Levels::get_experience_levels(['status' => 'active'])); ?>;
 
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            beforeSend: function() {
-                Swal.fire({
-                    title: 'Uploading...',
-                    text: 'Please wait',
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-            },
-            success: function(response) {
-                if (response.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Uploaded!',
-                        text: 'Profile image updated successfully',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
+        $('#years_experience').on('input change', function() {
+            const years = parseInt($(this).val()) || 0;
+            let level = 'Not set';
 
-                    // Update sidebar avatar with cache busting
-                    const newImageUrl = response.data.url + '?t=' + new Date().getTime();
-                    $('#sidebar-avatar-placeholder').remove();
-                    if ($('#sidebar-avatar-img').length) {
-                        $('#sidebar-avatar-img').attr('src', newImageUrl);
-                    } else {
-                        $('#sidebar-avatar').prepend('<img src="' + newImageUrl +
-                            '" alt="Profile" id="sidebar-avatar-img">');
+            if (years > 0) {
+                for (let i = 0; i < experienceLevels.length; i++) {
+                    const expLevel = experienceLevels[i];
+                    const minYears = parseInt(expLevel.years_min) || 0;
+                    const maxYears = expLevel.years_max ? parseInt(expLevel.years_max) : null;
+
+                    if (years >= minYears && (maxYears === null || years <= maxYears)) {
+                        const range = maxYears ? minYears + '-' + maxYears : minYears + '+';
+                        level = expLevel.name + ' (' + range + ' years)';
+                        break;
                     }
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Upload Failed',
-                        text: response.data.message || 'Failed to upload image'
-                    });
                 }
-            },
-            error: function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Network error. Please try again.'
-                });
             }
-        });
-    });
 
-    // Remove avatar
-    $(document).on('click', '#remove-avatar-btn', function() {
-        Swal.fire({
-            title: 'Remove Profile Image?',
-            text: 'Are you sure you want to remove your profile image?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, Remove',
-            confirmButtonColor: '#f44336'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.post(skd_ajax_object.ajax_url, {
-                    action: 'skd_remove_avatar',
-                    nonce: nonce
-                }, function(response) {
+            $('#experience_level_display').val(level);
+        });
+
+        // Basic Info Form
+        $('#basic-info-form').on('submit', function(e) {
+            e.preventDefault();
+
+            // Check if form is valid
+            if (!$(this).valid()) {
+                return false;
+            }
+
+            // Trigger TinyMCE save to update textareas
+            if (typeof tinyMCE !== 'undefined') {
+                tinyMCE.triggerSave();
+            }
+
+            const formData = new FormData(this);
+            formData.append('action', 'skd_update_profile_basic');
+            formData.append('nonce', nonce);
+
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Saving...',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+                },
+                success: function(response) {
                     if (response.success) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Removed!',
-                            text: 'Profile image removed',
-                            timer: 1500,
+                            title: 'Saved!',
+                            text: 'Basic information updated successfully',
+                            timer: 2000,
                             showConfirmButton: false
                         });
-                        // Replace with placeholder
-                        const initials = $('.vda-user-info h3').text().substring(0, 2)
-                            .toUpperCase();
-                        $('.vda-avatar-preview').html(
-                            '<div class="vda-avatar-placeholder-large" id="avatar-placeholder">' +
-                            initials + '</div>');
-                        $('#sidebar-avatar-img').remove();
-                        if ($('#sidebar-avatar-placeholder').length === 0) {
-                            $('#sidebar-avatar').prepend(
-                                '<div class="vda-avatar-placeholder" id="sidebar-avatar-placeholder">' +
-                                initials + '</div>');
+                        // Update sidebar display name if changed
+                        if (response.data.display_name) {
+                            $('.vda-profile-card h3').text(response.data.display_name);
                         }
-                        $('#remove-avatar-btn').remove();
+                        // Update tagline in sidebar if changed
+                        if (response.data.tagline) {
+                            $('.vda-tagline').text(response.data.tagline);
+                        }
                     } else {
-                        Swal.fire('Error', response.data.message || 'Failed to remove',
-                            'error');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response.data.message || 'Failed to update'
+                        });
                     }
-                });
-            }
-        });
-    });
-
-    // ============================================
-    // PORTFOLIO FUNCTIONALITY
-    // ============================================
-
-    // Helper function to update featured badge
-    function updateFeaturedBadge() {
-        $('#image-preview-grid .vda-featured-badge').remove();
-        const firstImage = $('#image-preview-grid .vda-image-preview').first();
-        if (firstImage.length > 0) {
-            firstImage.append('<span class="vda-featured-badge">Featured</span>');
-        }
-    }
-
-    // Open Add Portfolio Modal
-    $('#add-portfolio-btn').on('click', function() {
-        $('#portfolio-modal-title').text('Add Portfolio Item');
-        $('#portfolio-form')[0].reset();
-        $('#portfolio-id').val('');
-        $('#existing-images').val('');
-        $('#deleted-images').val('');
-        $('#image-preview-grid').html('').hide();
-
-        // Clear WordPress editor
-        if (typeof tinymce !== 'undefined' && tinymce.get('portfolio_description')) {
-            tinymce.get('portfolio_description').setContent('');
-        }
-
-        $('#portfolio-modal').css('display', 'block');
-    }); // Close Portfolio Modals
-    $('.vda-modal-close, #cancel-portfolio').on('click', function() {
-        $('#portfolio-modal, #portfolio-view-modal').css('display', 'none');
-    });
-
-    // Close modal on outside click
-    $(window).on('click', function(e) {
-        if ($(e.target).hasClass('vda-modal')) {
-            $('.vda-modal').css('display', 'none');
-        }
-    });
-
-    // Image Preview with validation
-    $('#portfolio-images').on('change', function(e) {
-        const files = e.target.files;
-        if (files.length > 0) {
-            let validFiles = [];
-            let errors = [];
-            const maxSize = 1 * 1024 * 1024; // 1MB in bytes
-
-            Array.from(files).forEach((file, index) => {
-                if (!file.type.startsWith('image/')) {
-                    errors.push(`${file.name} is not an image`);
-                    return;
                 }
-                if (file.size > maxSize) {
-                    errors.push(
-                        `${file.name} exceeds 1MB (${(file.size / 1024 / 1024).toFixed(2)}MB)`
-                    );
-                    return;
-                }
-                validFiles.push(file);
             });
+        });
 
-            if (errors.length > 0) {
+        // Skills & Specializations Form
+        $('#skills-services-form').on('submit', function(e) {
+            e.preventDefault();
+
+            // Check if form is valid
+            if (!$(this).valid()) {
+                return false;
+            }
+
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'skd_update_profile_skills',
+                    nonce: nonce,
+                    skills: $('select[name="skills[]"]').val(),
+                    specializations: $('select[name="specializations[]"]').val(),
+                    project_types: $('select[name="project_types[]"]').val(),
+                    service_types: $('select[name="service_types[]"]').val()
+                },
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Saving...',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Saved!',
+                            text: 'Skills and specializations updated successfully',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response.data.message || 'Failed to update'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Rates Form
+        $('#rates-form').on('submit', function(e) {
+            e.preventDefault();
+
+            // Check if form is valid
+            if (!$(this).valid()) {
+                return false;
+            }
+
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'skd_update_profile_rates',
+                    nonce: nonce,
+                    hourly_rate: $('input[name="hourly_rate"]').val(),
+                    availability_status: $('select[name="availability_status"]').val(),
+                    years_experience: $('input[name="years_experience"]').val(),
+                    response_time: $('select[name="response_time"]').val(),
+                    languages_spoken: $('select[name="languages_spoken[]"]').val()
+                },
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Saving...',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Saved!',
+                            text: 'Rates and availability updated successfully',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response.data.message || 'Failed to update'
+                        });
+                    }
+                }
+            });
+        });
+
+        // ============================================
+        // AVATAR UPLOAD FUNCTIONALITY
+        // ============================================
+
+        $('#avatar-upload').on('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Invalid Files',
-                    html: errors.join('<br>'),
+                    title: 'Invalid File',
+                    text: 'Please select an image file'
                 });
-                // Keep only valid files
-                const dt = new DataTransfer();
-                validFiles.forEach(f => dt.items.add(f));
-                this.files = dt.files;
+                return;
             }
 
-            if (validFiles.length > 0) {
-                // Remove previous new image previews (keep existing ones)
-                $('#image-preview-grid .vda-image-preview[data-type="new"]').remove();
+            // Validate file size (2MB max)
+            if (file.size > 2 * 1024 * 1024) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'File Too Large',
+                    text: 'Image must be less than 2MB'
+                });
+                return;
+            }
 
-                validFiles.forEach((file, index) => {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const preview = `
+            // Upload image
+            const formData = new FormData();
+            formData.append('action', 'skd_upload_avatar');
+            formData.append('nonce', nonce);
+            formData.append('avatar', file);
+
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function() {
+                    Swal.fire({
+                        title: 'Uploading...',
+                        text: 'Please wait',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Uploaded!',
+                            text: 'Profile image updated successfully',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+
+                        // Update sidebar avatar with cache busting
+                        const newImageUrl = response.data.url + '?t=' + new Date().getTime();
+                        $('#sidebar-avatar-placeholder').remove();
+                        if ($('#sidebar-avatar-img').length) {
+                            $('#sidebar-avatar-img').attr('src', newImageUrl);
+                        } else {
+                            $('#sidebar-avatar').prepend('<img src="' + newImageUrl + '" alt="Profile" id="sidebar-avatar-img">');
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Upload Failed',
+                            text: response.data.message || 'Failed to upload image'
+                        });
+                    }
+                },
+                error: function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Network error. Please try again.'
+                    });
+                }
+            });
+        });
+
+        // Remove avatar
+        $(document).on('click', '#remove-avatar-btn', function() {
+            Swal.fire({
+                title: 'Remove Profile Image?',
+                text: 'Are you sure you want to remove your profile image?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Remove',
+                confirmButtonColor: '#f44336'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post(skd_ajax_object.ajax_url, {
+                        action: 'skd_remove_avatar',
+                        nonce: nonce
+                    }, function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Removed!',
+                                text: 'Profile image removed',
+                                timer: 1500,
+                                showConfirmButton: false
+                            });
+                            // Replace with placeholder
+                            const initials = $('.vda-user-info h3').text().substring(0, 2).toUpperCase();
+                            $('.vda-avatar-preview').html('<div class="vda-avatar-placeholder-large" id="avatar-placeholder">' + initials + '</div>');
+                            $('#sidebar-avatar-img').remove();
+                            if ($('#sidebar-avatar-placeholder').length === 0) {
+                                $('#sidebar-avatar').prepend('<div class="vda-avatar-placeholder" id="sidebar-avatar-placeholder">' + initials + '</div>');
+                            }
+                            $('#remove-avatar-btn').remove();
+                        } else {
+                            Swal.fire('Error', response.data.message || 'Failed to remove', 'error');
+                        }
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // PORTFOLIO FUNCTIONALITY
+        // ============================================
+
+        // Helper function to update featured badge
+        function updateFeaturedBadge() {
+            $('#image-preview-grid .vda-featured-badge').remove();
+            const firstImage = $('#image-preview-grid .vda-image-preview').first();
+            if (firstImage.length > 0) {
+                firstImage.append('<span class="vda-featured-badge">Featured</span>');
+            }
+        }
+
+        // Open Add Portfolio Modal
+        $('#add-portfolio-btn').on('click', function() {
+            $('#portfolio-modal-title').text('Add Portfolio Item');
+            $('#portfolio-form')[0].reset();
+            $('#portfolio-id').val('');
+            $('#existing-images').val('');
+            $('#deleted-images').val('');
+            $('#image-preview-grid').html('').hide();
+
+            // Clear WordPress editor
+            if (typeof tinymce !== 'undefined' && tinymce.get('portfolio_description')) {
+                tinymce.get('portfolio_description').setContent('');
+            }
+
+            $('#portfolio-modal').css('display', 'block');
+        }); // Close Portfolio Modals
+        $('.vda-modal-close, #cancel-portfolio').on('click', function() {
+            $('#portfolio-modal, #portfolio-view-modal').css('display', 'none');
+        });
+
+        // Close modal on outside click
+        $(window).on('click', function(e) {
+            if ($(e.target).hasClass('vda-modal')) {
+                $('.vda-modal').css('display', 'none');
+            }
+        });
+
+        // Image Preview with validation
+        $('#portfolio-images').on('change', function(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                let validFiles = [];
+                let errors = [];
+                const maxSize = 1 * 1024 * 1024; // 1MB in bytes
+
+                Array.from(files).forEach((file, index) => {
+                    if (!file.type.startsWith('image/')) {
+                        errors.push(`${file.name} is not an image`);
+                        return;
+                    }
+                    if (file.size > maxSize) {
+                        errors.push(`${file.name} exceeds 1MB (${(file.size / 1024 / 1024).toFixed(2)}MB)`);
+                        return;
+                    }
+                    validFiles.push(file);
+                });
+
+                if (errors.length > 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid Files',
+                        html: errors.join('<br>'),
+                    });
+                    // Keep only valid files
+                    const dt = new DataTransfer();
+                    validFiles.forEach(f => dt.items.add(f));
+                    this.files = dt.files;
+                }
+
+                if (validFiles.length > 0) {
+                    // Remove previous new image previews (keep existing ones)
+                    $('#image-preview-grid .vda-image-preview[data-type="new"]').remove();
+
+                    validFiles.forEach((file, index) => {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const preview = `
                                 <div class="vda-image-preview" data-type="new" data-index="${index}">
                                     <img src="${e.target.result}" alt="Preview ${index + 1}">
                                     <button type="button" class="vda-delete-image" data-type="new" data-index="${index}">
@@ -1652,156 +1584,154 @@ jQuery(document).ready(function($) {
                                     </button>
                                 </div>
                             `;
-                        $('#image-preview-grid').append(preview).show();
+                            $('#image-preview-grid').append(preview).show();
 
-                        // Update featured badge after all images are loaded
-                        updateFeaturedBadge();
-                    };
-                    reader.readAsDataURL(file);
-                });
-            }
-        }
-    });
-
-    // Delete image from preview
-    $(document).on('click', '.vda-delete-image', function() {
-        const type = $(this).data('type');
-        const imageUrl = $(this).data('url');
-        const index = $(this).data('index');
-
-        if (type === 'existing') {
-            // Add to deleted images list
-            const deletedImages = $('#deleted-images').val();
-            const deletedArray = deletedImages ? JSON.parse(deletedImages) : [];
-            deletedArray.push(imageUrl);
-            $('#deleted-images').val(JSON.stringify(deletedArray));
-
-            // Remove from existing images list
-            const existingImages = $('#existing-images').val();
-            const existingArray = existingImages ? JSON.parse(existingImages) : [];
-            const updatedExisting = existingArray.filter(img => img !== imageUrl);
-            $('#existing-images').val(JSON.stringify(updatedExisting));
-        } else if (type === 'new') {
-            // Remove from file input
-            const fileInput = document.getElementById('portfolio-images');
-            const dt = new DataTransfer();
-            const files = fileInput.files;
-
-            for (let i = 0; i < files.length; i++) {
-                if (i !== index) {
-                    dt.items.add(files[i]);
+                            // Update featured badge after all images are loaded
+                            updateFeaturedBadge();
+                        };
+                        reader.readAsDataURL(file);
+                    });
                 }
             }
-            fileInput.files = dt.files;
-        }
+        });
 
-        // Remove preview
-        $(this).closest('.vda-image-preview').remove();
+        // Delete image from preview
+        $(document).on('click', '.vda-delete-image', function() {
+            const type = $(this).data('type');
+            const imageUrl = $(this).data('url');
+            const index = $(this).data('index');
 
-        // Update featured badge
-        updateFeaturedBadge();
+            if (type === 'existing') {
+                // Add to deleted images list
+                const deletedImages = $('#deleted-images').val();
+                const deletedArray = deletedImages ? JSON.parse(deletedImages) : [];
+                deletedArray.push(imageUrl);
+                $('#deleted-images').val(JSON.stringify(deletedArray));
 
-        if ($('#image-preview-grid .vda-image-preview').length === 0) {
-            $('#image-preview-grid').hide();
-        }
-    });
+                // Remove from existing images list
+                const existingImages = $('#existing-images').val();
+                const existingArray = existingImages ? JSON.parse(existingImages) : [];
+                const updatedExisting = existingArray.filter(img => img !== imageUrl);
+                $('#existing-images').val(JSON.stringify(updatedExisting));
+            } else if (type === 'new') {
+                // Remove from file input
+                const fileInput = document.getElementById('portfolio-images');
+                const dt = new DataTransfer();
+                const files = fileInput.files;
 
-    // Submit Portfolio Form
-    $('#portfolio-form').on('submit', function(e) {
-        e.preventDefault();
-
-        // Check if form is valid
-        if (!$(this).valid()) {
-            return false;
-        }
-
-        const formData = new FormData(this);
-        const isEdit = $('#portfolio-id').val() !== '';
-
-        formData.append('action', isEdit ? 'skd_update_portfolio_item' : 'skd_add_portfolio_item');
-        formData.append('nonce', nonce);
-
-        // Get description from WordPress editor
-        if (typeof tinymce !== 'undefined') {
-            var editor = tinymce.get('portfolio_description');
-            if (editor) {
-                var editorContent = editor.getContent();
-                formData.set('description', editorContent);
+                for (let i = 0; i < files.length; i++) {
+                    if (i !== index) {
+                        dt.items.add(files[i]);
+                    }
+                }
+                fileInput.files = dt.files;
             }
-        }
 
-        // Process tags - send as comma-separated string
-        const tagsInput = $('#portfolio-tags').val().trim();
-        if (tagsInput) {
-            formData.append('tags', tagsInput);
-            console.log('Tags being sent:', tagsInput);
-        }
+            // Remove preview
+            $(this).closest('.vda-image-preview').remove();
 
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            beforeSend: function() {
-                Swal.fire({
-                    title: isEdit ? 'Updating...' : 'Adding...',
-                    text: 'Please wait',
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-            },
-            success: function(response) {
-                if (response.success) {
+            // Update featured badge
+            updateFeaturedBadge();
+
+            if ($('#image-preview-grid .vda-image-preview').length === 0) {
+                $('#image-preview-grid').hide();
+            }
+        });
+
+        // Submit Portfolio Form
+        $('#portfolio-form').on('submit', function(e) {
+            e.preventDefault();
+
+            // Check if form is valid
+            if (!$(this).valid()) {
+                return false;
+            }
+
+            const formData = new FormData(this);
+            const isEdit = $('#portfolio-id').val() !== '';
+
+            formData.append('action', isEdit ? 'skd_update_portfolio_item' : 'skd_add_portfolio_item');
+            formData.append('nonce', nonce);
+
+            // Get description from WordPress editor
+            if (typeof tinymce !== 'undefined') {
+                var editor = tinymce.get('portfolio_description');
+                if (editor) {
+                    var editorContent = editor.getContent();
+                    formData.set('description', editorContent);
+                }
+            }
+
+            // Process tags - send as comma-separated string
+            const tagsInput = $('#portfolio-tags').val().trim();
+            if (tagsInput) {
+                formData.append('tags', tagsInput);
+                console.log('Tags being sent:', tagsInput);
+            }
+
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function() {
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Success!',
-                        text: response.data.message || (isEdit ?
-                            'Portfolio updated' : 'Portfolio added'),
-                        timer: 2000,
-                        showConfirmButton: false
-                    }).then(() => {
-                        $('#portfolio-modal').css('display', 'none');
-                        loadPortfolioItems();
+                        title: isEdit ? 'Updating...' : 'Adding...',
+                        text: 'Please wait',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
                     });
-                } else {
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: response.data.message || (isEdit ? 'Portfolio updated' : 'Portfolio added'),
+                            timer: 2000,
+                            showConfirmButton: false
+                        }).then(() => {
+                            $('#portfolio-modal').css('display', 'none');
+                            loadPortfolioItems();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response.data.message || 'Failed to save portfolio item'
+                        });
+                    }
+                },
+                error: function() {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: response.data.message ||
-                            'Failed to save portfolio item'
+                        text: 'Network error. Please try again.'
                     });
                 }
-            },
-            error: function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Network error. Please try again.'
-                });
-            }
+            });
         });
-    });
 
-    // Load Portfolio Items
-    function loadPortfolioItems() {
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'skd_get_portfolio_items',
-                nonce: nonce
-            },
-            success: function(response) {
-                if (response.success && response.data.items) {
-                    const items = response.data.items;
-                    let html = '';
+        // Load Portfolio Items
+        function loadPortfolioItems() {
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'skd_get_portfolio_items',
+                    nonce: nonce
+                },
+                success: function(response) {
+                    if (response.success && response.data.items) {
+                        const items = response.data.items;
+                        let html = '';
 
-                    if (items.length === 0) {
-                        html = `
+                        if (items.length === 0) {
+                            html = `
                                 <div class="vda-empty-state">
-                                    <iconify-icon icon="material-symbols:folder-open-outline""></iconify-icon>
-                                    <h4>No Portfolio Items Yet</h4>
+                                    <iconify-icon icon="material-symbols:folder-open-outline" style="font-size: 80px; color: #ccc;"></iconify-icon>
+                                    <h3>No Portfolio Items Yet</h3>
                                     <p>Showcase your best work by adding your first portfolio item.</p>
                                     <button type="button" class="vda-btn vda-btn-primary" onclick="$('#add-portfolio-btn').click();">
                                         <iconify-icon icon="material-symbols:add"></iconify-icon>
@@ -1809,79 +1739,69 @@ jQuery(document).ready(function($) {
                                     </button>
                                 </div>
                             `;
-                    } else {
-                        items.forEach(item => {
-                            // Parse tags - handle both escaped and non-escaped JSON
-                            let tagsHtml = '';
-                            if (item.tags) {
-                                console.log('Item tags raw:', item.tags);
-                                try {
-                                    // Handle escaped JSON from database
-                                    let tagsData = item.tags;
-                                    // If it's a string that looks like escaped JSON, unescape it
-                                    if (typeof tagsData === 'string' && tagsData.includes(
-                                            '\\')) {
-                                        // Remove the escaping backslashes
-                                        tagsData = tagsData.replace(/\\\"/g, '"');
-                                    }
-                                    const tags = JSON.parse(tagsData);
-                                    console.log('Item tags parsed:', tags);
-                                    if (Array.isArray(tags) && tags.length > 0) {
-                                        tagsHtml = tags.slice(0, 3).map(tag =>
-                                            `<span class="vda-tag">${tag}</span>`
-                                        ).join('');
-                                        if (tags.length > 3) {
-                                            tagsHtml +=
-                                                `<span class="vda-tag">+${tags.length - 3}</span>`;
+                        } else {
+                            items.forEach(item => {
+                                // Parse tags - handle both escaped and non-escaped JSON
+                                let tagsHtml = '';
+                                if (item.tags) {
+                                    console.log('Item tags raw:', item.tags);
+                                    try {
+                                        // Handle escaped JSON from database
+                                        let tagsData = item.tags;
+                                        // If it's a string that looks like escaped JSON, unescape it
+                                        if (typeof tagsData === 'string' && tagsData.includes('\\')) {
+                                            // Remove the escaping backslashes
+                                            tagsData = tagsData.replace(/\\\"/g, '"');
                                         }
+                                        const tags = JSON.parse(tagsData);
+                                        console.log('Item tags parsed:', tags);
+                                        if (Array.isArray(tags) && tags.length > 0) {
+                                            tagsHtml = tags.slice(0, 3).map(tag =>
+                                                `<span class="vda-tag">${tag}</span>`
+                                            ).join('');
+                                            if (tags.length > 3) {
+                                                tagsHtml += `<span class="vda-tag">+${tags.length - 3}</span>`;
+                                            }
+                                        }
+                                    } catch (e) {
+                                        console.error('Error parsing tags:', e, 'Raw tags:', item.tags);
                                     }
-                                } catch (e) {
-                                    console.error('Error parsing tags:', e, 'Raw tags:',
-                                        item.tags);
+                                } else {
+                                    console.log('No tags for item:', item.id);
                                 }
-                            } else {
-                                console.log('No tags for item:', item.id);
-                            }
 
-                            // Prepare description
-                            let descHtml = '';
-                            if (item.description) {
-                                const stripped = item.description.replace(/<[^>]*>/g, '');
-                                const truncated = stripped.substring(0, 120);
-                                const ellipsis = stripped.length > 120 ? '...' : '';
-                                descHtml =
-                                    `<p class="vda-portfolio-desc">${truncated}${ellipsis}</p>`;
-                            }
+                                // Prepare description
+                                let descHtml = '';
+                                if (item.description) {
+                                    const stripped = item.description.replace(/<[^>]*>/g, '');
+                                    const truncated = stripped.substring(0, 120);
+                                    const ellipsis = stripped.length > 120 ? '...' : '';
+                                    descHtml = `<p class="vda-portfolio-desc">${truncated}${ellipsis}</p>`;
+                                }
 
-                            // Default placeholder image
-                            const placeholderSvg =
-                                'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2220%22 dy=%2210.5%22 font-weight=%22bold%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ENo Image%3C/text%3E%3C/svg%3E';
-                            const imageUrl = item.featured_image || item.image_url ||
-                                placeholderSvg;
+                                // Default placeholder image
+                                const placeholderSvg = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2220%22 dy=%2210.5%22 font-weight=%22bold%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ENo Image%3C/text%3E%3C/svg%3E';
+                                const imageUrl = item.featured_image || item.image_url || placeholderSvg;
 
-                            // Prepare tags HTML
-                            let tagsSection = '';
-                            if (tagsHtml) {
-                                tagsSection = '<div class="vda-portfolio-tags">' +
-                                    tagsHtml + '</div>';
-                            }
+                                // Prepare tags HTML
+                                let tagsSection = '';
+                                if (tagsHtml) {
+                                    tagsSection = '<div class="vda-portfolio-tags">' + tagsHtml + '</div>';
+                                }
 
-                            // Prepare year HTML
-                            let yearHtml = '';
-                            if (item.year) {
-                                yearHtml =
-                                    '<span><iconify-icon icon="material-symbols:calendar-month-outline"></iconify-icon> ' +
-                                    item.year + '</span>';
-                            }
+                                // Prepare year HTML
+                                let yearHtml = '';
+                                if (item.year) {
+                                    yearHtml = '<span><iconify-icon icon="material-symbols:calendar-month-outline"></iconify-icon> ' + item.year + '</span>';
+                                }
 
-                            // Prepare category badge
-                            let categoryBadge = '';
-                            if (item.category_name) {
-                                categoryBadge = '<span class="vda-category-badge">' + item
-                                    .category_name + '</span>';
-                            }
+                                // Prepare category badge
+                                let categoryBadge = '';
+                                if (item.category_name) {
+                                    categoryBadge = '<span class="vda-category-badge">' + item.category_name + '</span>';
+                                }
 
-                            html += `
+                                html += `
                                     <div class="vda-portfolio-card" data-id="${item.id}">
                                         <div class="vda-portfolio-image">
                                             <img src="${imageUrl}" alt="${item.title}">
@@ -1908,72 +1828,69 @@ jQuery(document).ready(function($) {
                                         </div>
                                     </div>
                                 `;
-                        });
-                    }
+                            });
+                        }
 
-                    $('#portfolio-items-list').html(html);
+                        $('#portfolio-items-list').html(html);
+                    }
                 }
-            }
-        });
-    }
+            });
+        }
 
-    // View Portfolio Item
-    $(document).on('click', '.view-portfolio', function() {
-        const itemId = $(this).data('id');
+        // View Portfolio Item
+        $(document).on('click', '.view-portfolio', function() {
+            const itemId = $(this).data('id');
 
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'skd_get_portfolio_item',
-                nonce: nonce,
-                item_id: itemId
-            },
-            success: function(response) {
-                if (response.success && response.data.item) {
-                    const item = response.data.item;
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'skd_get_portfolio_item',
+                    nonce: nonce,
+                    item_id: itemId
+                },
+                success: function(response) {
+                    if (response.success && response.data.item) {
+                        const item = response.data.item;
 
-                    // Parse images with zoom functionality
-                    let imagesHtml = '';
-                    if (item.images) {
-                        try {
-                            let imagesData = item.images;
-                            if (typeof imagesData === 'string' && imagesData.includes(
-                                    '\\')) {
-                                imagesData = imagesData.replace(/\\"/g, '"');
+                        // Parse images with zoom functionality
+                        let imagesHtml = '';
+                        if (item.images) {
+                            try {
+                                let imagesData = item.images;
+                                if (typeof imagesData === 'string' && imagesData.includes('\\')) {
+                                    imagesData = imagesData.replace(/\\"/g, '"');
+                                }
+                                const images = JSON.parse(imagesData);
+                                if (Array.isArray(images) && images.length > 0) {
+                                    imagesHtml = images.map(img =>
+                                        `<img src="${img}" alt="${item.title}" class="vda-zoomable-image" data-zoom-src="${img}">`
+                                    ).join('');
+                                }
+                            } catch (e) {
+                                imagesHtml = `<img src="${item.featured_image || item.image_url}" alt="${item.title}" class="vda-zoomable-image" data-zoom-src="${item.featured_image || item.image_url}">`;
                             }
-                            const images = JSON.parse(imagesData);
-                            if (Array.isArray(images) && images.length > 0) {
-                                imagesHtml = images.map(img =>
-                                    `<img src="${img}" alt="${item.title}" class="vda-zoomable-image" data-zoom-src="${img}">`
-                                ).join('');
-                            }
-                        } catch (e) {
-                            imagesHtml =
-                                `<img src="${item.featured_image || item.image_url}" alt="${item.title}" class="vda-zoomable-image" data-zoom-src="${item.featured_image || item.image_url}">`;
                         }
-                    }
 
-                    // Parse tags - handle escaped JSON
-                    let tagsHtml = '';
-                    if (item.tags) {
-                        try {
-                            let tagsData = item.tags;
-                            // Handle escaped JSON from database
-                            if (typeof tagsData === 'string' && tagsData.includes('\\')) {
-                                tagsData = tagsData.replace(/\\\"/g, '"');
+                        // Parse tags - handle escaped JSON
+                        let tagsHtml = '';
+                        if (item.tags) {
+                            try {
+                                let tagsData = item.tags;
+                                // Handle escaped JSON from database
+                                if (typeof tagsData === 'string' && tagsData.includes('\\')) {
+                                    tagsData = tagsData.replace(/\\\"/g, '"');
+                                }
+                                const tags = JSON.parse(tagsData);
+                                if (Array.isArray(tags) && tags.length > 0) {
+                                    tagsHtml = tags.map(tag => `<span class="vda-tag">${tag}</span>`).join('');
+                                }
+                            } catch (e) {
+                                console.error('Error parsing tags in view modal:', e);
                             }
-                            const tags = JSON.parse(tagsData);
-                            if (Array.isArray(tags) && tags.length > 0) {
-                                tagsHtml = tags.map(tag =>
-                                    `<span class="vda-tag">${tag}</span>`).join('');
-                            }
-                        } catch (e) {
-                            console.error('Error parsing tags in view modal:', e);
                         }
-                    }
 
-                    const viewHtml = `
+                        const viewHtml = `
                             <h2>${item.title}</h2>
                             ${item.category_name ? `<p class="vda-category-label"><strong>Category:</strong> ${item.category_name}</p>` : ''}
                             
@@ -2002,77 +1919,74 @@ jQuery(document).ready(function($) {
                             ` : ''}
                         `;
 
-                    $('#portfolio-view-content').html(viewHtml);
-                    $('#portfolio-view-modal').css('display', 'block');
-                }
-            }
-        });
-    });
-
-    // Edit Portfolio Item
-    $(document).on('click', '.edit-portfolio', function() {
-        const itemId = $(this).data('id');
-
-        $.ajax({
-            url: skd_ajax_object.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'skd_get_portfolio_item',
-                nonce: nonce,
-                item_id: itemId
-            },
-            success: function(response) {
-                if (response.success && response.data.item) {
-                    const item = response.data.item;
-
-                    $('#portfolio-modal-title').text('Edit Portfolio Item');
-                    $('#portfolio-id').val(item.id);
-                    $('#portfolio-title').val(item.title);
-                    $('#portfolio-category').val(item.category_id);
-                    $('#portfolio-year').val(item.year || '');
-
-                    // Set description in WordPress editor
-                    if (typeof tinymce !== 'undefined' && tinymce.get(
-                            'portfolio_description')) {
-                        tinymce.get('portfolio_description').setContent(item.description ||
-                            '');
+                        $('#portfolio-view-content').html(viewHtml);
+                        $('#portfolio-view-modal').css('display', 'block');
                     }
+                }
+            });
+        });
 
-                    // Parse and populate tags - handle escaped JSON
-                    if (item.tags) {
-                        try {
-                            let tagsData = item.tags;
-                            // Handle escaped JSON from database
-                            if (typeof tagsData === 'string' && tagsData.includes('\\')) {
-                                tagsData = tagsData.replace(/\\\"/g, '"');
+        // Edit Portfolio Item
+        $(document).on('click', '.edit-portfolio', function() {
+            const itemId = $(this).data('id');
+
+            $.ajax({
+                url: skd_ajax_object.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'skd_get_portfolio_item',
+                    nonce: nonce,
+                    item_id: itemId
+                },
+                success: function(response) {
+                    if (response.success && response.data.item) {
+                        const item = response.data.item;
+
+                        $('#portfolio-modal-title').text('Edit Portfolio Item');
+                        $('#portfolio-id').val(item.id);
+                        $('#portfolio-title').val(item.title);
+                        $('#portfolio-category').val(item.category_id);
+                        $('#portfolio-year').val(item.year || '');
+
+                        // Set description in WordPress editor
+                        if (typeof tinymce !== 'undefined' && tinymce.get('portfolio_description')) {
+                            tinymce.get('portfolio_description').setContent(item.description || '');
+                        }
+
+                        // Parse and populate tags - handle escaped JSON
+                        if (item.tags) {
+                            try {
+                                let tagsData = item.tags;
+                                // Handle escaped JSON from database
+                                if (typeof tagsData === 'string' && tagsData.includes('\\')) {
+                                    tagsData = tagsData.replace(/\\\"/g, '"');
+                                }
+                                const tags = JSON.parse(tagsData);
+                                if (Array.isArray(tags)) {
+                                    $('#portfolio-tags').val(tags.join(', '));
+                                }
+                            } catch (e) {
+                                console.error('Error parsing tags for edit:', e);
+                                $('#portfolio-tags').val('');
                             }
-                            const tags = JSON.parse(tagsData);
-                            if (Array.isArray(tags)) {
-                                $('#portfolio-tags').val(tags.join(', '));
-                            }
-                        } catch (e) {
-                            console.error('Error parsing tags for edit:', e);
+                        } else {
                             $('#portfolio-tags').val('');
                         }
-                    } else {
-                        $('#portfolio-tags').val('');
-                    }
 
-                    // Show existing images preview with delete buttons
-                    if (item.images) {
-                        try {
-                            let imagesData = item.images;
-                            if (typeof imagesData === 'string' && imagesData.includes(
-                                    '\\')) {
-                                imagesData = imagesData.replace(/\\"/g, '"');
-                            }
-                            const images = JSON.parse(imagesData);
-                            if (Array.isArray(images) && images.length > 0) {
-                                $('#existing-images').val(JSON.stringify(images));
-                                $('#deleted-images').val('');
-                                $('#image-preview-grid').html('').show();
-                                images.forEach((img, index) => {
-                                    const preview = `
+                        // Show existing images preview with delete buttons
+                        if (item.images) {
+                            try {
+                                let imagesData = item.images;
+                                if (typeof imagesData === 'string' && imagesData.includes('\\')) {
+                                    imagesData = imagesData.replace(/\\"/g, '"');
+                                }
+                                const images = JSON.parse(imagesData);
+                                if (Array.isArray(images) && images.length > 0) {
+                                    $('#existing-images').val(JSON.stringify(images));
+                                    $('#deleted-images').val('');
+                                    $('#image-preview-grid').html('').show();
+                                    images.forEach((img, index) => {
+                                        const preview = `
                                             <div class="vda-image-preview" data-type="existing" data-url="${img}">
                                                 <img src="${img}" alt="Existing ${index + 1}">
                                                 <button type="button" class="vda-delete-image" data-type="existing" data-url="${img}">
@@ -2081,28 +1995,28 @@ jQuery(document).ready(function($) {
                                                 ${index === 0 ? '<span class="vda-featured-badge">Featured</span>' : ''}
                                             </div>
                                         `;
-                                    $('#image-preview-grid').append(preview);
-                                });
+                                        $('#image-preview-grid').append(preview);
+                                    });
+                                }
+                            } catch (e) {
+                                console.error('Error parsing images:', e);
                             }
-                        } catch (e) {
-                            console.error('Error parsing images:', e);
                         }
+
+                        $('#portfolio-modal').css('display', 'block');
                     }
-
-                    $('#portfolio-modal').css('display', 'block');
                 }
-            }
+            });
         });
-    });
 
-    // Image zoom functionality using WordPress lightbox
-    $(document).on('click', '.vda-zoomable-image', function(e) {
-        e.preventDefault();
-        const imgSrc = $(this).data('zoom-src');
-        const imgAlt = $(this).attr('alt') || 'Portfolio Image';
+        // Image zoom functionality using WordPress lightbox
+        $(document).on('click', '.vda-zoomable-image', function(e) {
+            e.preventDefault();
+            const imgSrc = $(this).data('zoom-src');
+            const imgAlt = $(this).attr('alt') || 'Portfolio Image';
 
-        // Create lightbox HTML
-        const lightboxHtml = `
+            // Create lightbox HTML
+            const lightboxHtml = `
                 <div class="vda-lightbox" style="display: block;">
                     <div class="vda-lightbox-content">
                         <span class="vda-lightbox-close">&times;</span>
@@ -2111,486 +2025,482 @@ jQuery(document).ready(function($) {
                 </div>
             `;
 
-        // Append to body
-        $('body').append(lightboxHtml);
+            // Append to body
+            $('body').append(lightboxHtml);
 
-        // Prevent body scroll
-        $('body').css('overflow', 'hidden');
+            // Prevent body scroll
+            $('body').css('overflow', 'hidden');
 
-        // Close on click outside or close button
-        $('.vda-lightbox, .vda-lightbox-close').on('click', function() {
-            $('.vda-lightbox').fadeOut(300, function() {
-                $(this).remove();
-                $('body').css('overflow', '');
+            // Close on click outside or close button
+            $('.vda-lightbox, .vda-lightbox-close').on('click', function() {
+                $('.vda-lightbox').fadeOut(300, function() {
+                    $(this).remove();
+                    $('body').css('overflow', '');
+                });
+            });
+
+            // Prevent image click from closing
+            $('.vda-lightbox-content img').on('click', function(e) {
+                e.stopPropagation();
             });
         });
 
-        // Prevent image click from closing
-        $('.vda-lightbox-content img').on('click', function(e) {
-            e.stopPropagation();
+        // Delete Portfolio Item
+        $(document).on('click', '.delete-portfolio', function() {
+            const itemId = $(this).data('id');
+
+            Swal.fire({
+                title: 'Delete Portfolio Item?',
+                text: 'This action cannot be undone',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#f44336',
+                confirmButtonText: 'Yes, Delete'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post(skd_ajax_object.ajax_url, {
+                        action: 'skd_delete_portfolio_item',
+                        nonce: nonce,
+                        item_id: itemId
+                    }, function(response) {
+                        if (response.success) {
+                            Swal.fire('Deleted!', 'Portfolio item removed', 'success');
+                            loadPortfolioItems();
+                        }
+                    });
+                }
+            });
         });
-    });
 
-    // Delete Portfolio Item
-    $(document).on('click', '.delete-portfolio', function() {
-        const itemId = $(this).data('id');
+        // Load portfolio items when tab is opened
+        $('.vda-menu-item[data-tab="profile"]').on('click', function() {
+            setTimeout(loadPortfolioItems, 500);
+        });
 
-        Swal.fire({
-            title: 'Delete Portfolio Item?',
-            text: 'This action cannot be undone',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#f44336',
-            confirmButtonText: 'Yes, Delete'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.post(skd_ajax_object.ajax_url, {
-                    action: 'skd_delete_portfolio_item',
-                    nonce: nonce,
-                    item_id: itemId
-                }, function(response) {
-                    if (response.success) {
-                        Swal.fire('Deleted!', 'Portfolio item removed', 'success');
-                        loadPortfolioItems();
+        // Initialize jQuery Validation for Password Change Form
+        $('#change-password-form').validate({
+            rules: {
+                current_password: {
+                    required: true
+                },
+                new_password: {
+                    required: true,
+                    minlength: 8
+                },
+                confirm_password: {
+                    required: true,
+                    equalTo: '#new_password'
+                }
+            },
+            messages: {
+                current_password: {
+                    required: 'Please enter your current password'
+                },
+                new_password: {
+                    required: 'Please enter a new password',
+                    minlength: 'Password must be at least 8 characters long'
+                },
+                confirm_password: {
+                    required: 'Please confirm your new password',
+                    equalTo: 'Passwords do not match'
+                }
+            },
+            errorClass: 'error',
+            validClass: 'valid',
+            errorElement: 'label',
+            errorPlacement: function(error, element) {
+                if (element.closest('.vda-password-wrapper').length) {
+                    error.insertAfter(element.closest('.vda-password-wrapper'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            submitHandler: function(form) {
+                const currentPassword = $('#current_password').val().trim();
+                const newPassword = $('#new_password').val().trim();
+
+                // Additional validation: new password must be different from current
+                if (currentPassword === newPassword) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Same Password',
+                        text: 'New password must be different from current password'
+                    });
+                    return false;
+                }
+
+                $.ajax({
+                    url: skd_ajax_object.ajax_url,
+                    type: 'POST',
+                    data: {
+                        action: 'skd_change_password',
+                        nonce: nonce,
+                        current_password: currentPassword,
+                        new_password: newPassword
+                    },
+                    beforeSend: function() {
+                        Swal.fire({
+                            title: 'Updating Password...',
+                            allowOutsideClick: false,
+                            didOpen: () => Swal.showLoading()
+                        });
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Password Updated',
+                                text: response.data.message || 'Your password has been updated successfully',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            $('#change-password-form')[0].reset();
+                            $('#change-password-form').validate().resetForm();
+
+                            // Refresh nonce after password change
+                            $.post(skd_ajax_object.ajax_url, {
+                                action: 'skd_get_fresh_nonce'
+                            }, function(nonceResponse) {
+                                if (nonceResponse.success && nonceResponse.data.nonce) {
+                                    nonce = nonceResponse.data.nonce;
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Update Failed',
+                                text: response.data.message || 'Failed to update password. Please check your current password and try again.'
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'An error occurred while updating password. Please try again.'
+                        });
                     }
                 });
-            }
-        });
-    });
 
-    // Load portfolio items when tab is opened
-    $('.vda-menu-item[data-tab="profile"]').on('click', function() {
-        setTimeout(loadPortfolioItems, 500);
-    });
-
-    // Initialize jQuery Validation for Password Change Form
-    $('#change-password-form').validate({
-        rules: {
-            current_password: {
-                required: true
-            },
-            new_password: {
-                required: true,
-                minlength: 8
-            },
-            confirm_password: {
-                required: true,
-                equalTo: '#new_password'
-            }
-        },
-        messages: {
-            current_password: {
-                required: 'Please enter your current password'
-            },
-            new_password: {
-                required: 'Please enter a new password',
-                minlength: 'Password must be at least 8 characters long'
-            },
-            confirm_password: {
-                required: 'Please confirm your new password',
-                equalTo: 'Passwords do not match'
-            }
-        },
-        errorClass: 'error',
-        validClass: 'valid',
-        errorElement: 'label',
-        errorPlacement: function(error, element) {
-            if (element.closest('.vda-password-wrapper').length) {
-                error.insertAfter(element.closest('.vda-password-wrapper'));
-            } else {
-                error.insertAfter(element);
-            }
-        },
-        submitHandler: function(form) {
-            const currentPassword = $('#current_password').val().trim();
-            const newPassword = $('#new_password').val().trim();
-
-            // Additional validation: new password must be different from current
-            if (currentPassword === newPassword) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Same Password',
-                    text: 'New password must be different from current password'
-                });
                 return false;
             }
+        });
 
-            $.ajax({
-                url: skd_ajax_object.ajax_url,
-                type: 'POST',
-                data: {
-                    action: 'skd_change_password',
+        // Initialize jQuery Validation for Account Information Form
+        $('#account-info-form').validate({
+            rules: {
+                first_name: {
+                    required: true,
+                    maxlength: 50
+                },
+                last_name: {
+                    required: true,
+                    maxlength: 50
+                },
+                display_name: {
+                    required: true,
+                    maxlength: 100
+                },
+                phone: {
+                    maxlength: 20
+                }
+            },
+            messages: {
+                first_name: {
+                    required: 'Please enter your first name',
+                    maxlength: 'First name must not exceed 50 characters'
+                },
+                last_name: {
+                    required: 'Please enter your last name',
+                    maxlength: 'Last name must not exceed 50 characters'
+                },
+                display_name: {
+                    required: 'Please enter a display name',
+                    maxlength: 'Display name must not exceed 100 characters'
+                },
+                phone: {
+                    maxlength: 'Phone number must not exceed 20 characters'
+                }
+            },
+            errorClass: 'error',
+            validClass: 'valid',
+            errorElement: 'label',
+            submitHandler: function(form) {
+                const formData = {
+                    action: 'skd_update_account_info',
                     nonce: nonce,
-                    current_password: currentPassword,
-                    new_password: newPassword
-                },
-                beforeSend: function() {
-                    Swal.fire({
-                        title: 'Updating Password...',
-                        allowOutsideClick: false,
-                        didOpen: () => Swal.showLoading()
-                    });
-                },
-                success: function(response) {
-                    if (response.success) {
+                    first_name: $('#account_first_name').val(),
+                    last_name: $('#account_last_name').val(),
+                    display_name: $('#account_display_name').val(),
+                    phone: $('#account_phone').val()
+                };
+
+                $.ajax({
+                    url: skd_ajax_object.ajax_url,
+                    type: 'POST',
+                    data: formData,
+                    beforeSend: function() {
                         Swal.fire({
-                            icon: 'success',
-                            title: 'Password Updated',
-                            text: response.data.message ||
-                                'Your password has been updated successfully',
-                            timer: 2000,
-                            showConfirmButton: false
+                            title: 'Updating Information...',
+                            allowOutsideClick: false,
+                            didOpen: () => Swal.showLoading()
                         });
-                        $('#change-password-form')[0].reset();
-                        $('#change-password-form').validate().resetForm();
-
-                        // Refresh nonce after password change
-                        $.post(skd_ajax_object.ajax_url, {
-                            action: 'skd_get_fresh_nonce'
-                        }, function(nonceResponse) {
-                            if (nonceResponse.success && nonceResponse.data
-                                .nonce) {
-                                nonce = nonceResponse.data.nonce;
-                            }
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Update Failed',
-                            text: response.data.message ||
-                                'Failed to update password. Please check your current password and try again.'
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'An error occurred while updating password. Please try again.'
-                    });
-                }
-            });
-
-            return false;
-        }
-    });
-
-    // Initialize jQuery Validation for Account Information Form
-    $('#account-info-form').validate({
-        rules: {
-            first_name: {
-                required: true,
-                maxlength: 50
-            },
-            last_name: {
-                required: true,
-                maxlength: 50
-            },
-            display_name: {
-                required: true,
-                maxlength: 100
-            },
-            phone: {
-                maxlength: 20
-            }
-        },
-        messages: {
-            first_name: {
-                required: 'Please enter your first name',
-                maxlength: 'First name must not exceed 50 characters'
-            },
-            last_name: {
-                required: 'Please enter your last name',
-                maxlength: 'Last name must not exceed 50 characters'
-            },
-            display_name: {
-                required: 'Please enter a display name',
-                maxlength: 'Display name must not exceed 100 characters'
-            },
-            phone: {
-                maxlength: 'Phone number must not exceed 20 characters'
-            }
-        },
-        errorClass: 'error',
-        validClass: 'valid',
-        errorElement: 'label',
-        submitHandler: function(form) {
-            const formData = {
-                action: 'skd_update_account_info',
-                nonce: nonce,
-                first_name: $('#account_first_name').val(),
-                last_name: $('#account_last_name').val(),
-                display_name: $('#account_display_name').val(),
-                phone: $('#account_phone').val()
-            };
-
-            $.ajax({
-                url: skd_ajax_object.ajax_url,
-                type: 'POST',
-                data: formData,
-                beforeSend: function() {
-                    Swal.fire({
-                        title: 'Updating Information...',
-                        allowOutsideClick: false,
-                        didOpen: () => Swal.showLoading()
-                    });
-                },
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Updated',
-                            text: 'Account information updated successfully',
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
-                        // Update sidebar display name without reload
-                        $('.vda-user-info h3').text(formData.display_name);
-                    } else {
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Updated',
+                                text: 'Account information updated successfully',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            // Update sidebar display name without reload
+                            $('.vda-user-info h3').text(formData.display_name);
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Update Failed',
+                                text: response.data.message || 'Failed to update account information'
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Update Failed',
-                            text: response.data.message ||
-                                'Failed to update account information'
+                            title: 'Error',
+                            text: 'An error occurred while updating account information'
                         });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'An error occurred while updating account information'
-                    });
-                }
-            });
-
-            return false;
-        }
-    });
-
-    // Initialize jQuery Validation for Basic Info Form
-    $('#basic-info-form').validate({
-        rules: {
-            first_name: {
-                required: true,
-                minlength: 2,
-                maxlength: 50
-            },
-            last_name: {
-                required: true,
-                minlength: 2,
-                maxlength: 50
-            },
-            tagline: {
-                maxlength: 200
-            },
-            short_description: {
-                maxlength: 300
-            },
-            country: {
-                required: true
-            },
-            city: {
-                required: true,
-                minlength: 2
-            },
-            timezone: {
-                required: true
-            }
-        },
-        messages: {
-            first_name: {
-                required: 'Please enter your first name',
-                minlength: 'First name must be at least 2 characters',
-                maxlength: 'First name must not exceed 50 characters'
-            },
-            last_name: {
-                required: 'Please enter your last name',
-                minlength: 'Last name must be at least 2 characters',
-                maxlength: 'Last name must not exceed 50 characters'
-            },
-            tagline: {
-                maxlength: 'Tagline must not exceed 200 characters'
-            },
-            short_description: {
-                maxlength: 'Description must not exceed 300 characters'
-            },
-            country: {
-                required: 'Please select your country'
-            },
-            city: {
-                required: 'Please enter your city',
-                minlength: 'City must be at least 2 characters'
-            },
-            timezone: {
-                required: 'Please select your timezone'
-            }
-        },
-        errorClass: 'error',
-        validClass: 'valid',
-        errorElement: 'label',
-        errorPlacement: function(error, element) {
-            error.insertAfter(element);
-        }
-    });
-
-    // Initialize jQuery Validation for Skills & Services Form
-    $('#skills-services-form').validate({
-        rules: {
-            'skills[]': {
-                required: true
-            },
-            'specializations[]': {
-                required: true
-            }
-        },
-        messages: {
-            'skills[]': {
-                required: 'Please select at least one skill'
-            },
-            'specializations[]': {
-                required: 'Please select at least one specialization'
-            }
-        },
-        errorClass: 'error',
-        validClass: 'valid',
-        errorElement: 'label',
-        errorPlacement: function(error, element) {
-            error.insertAfter(element.next('.select2-container'));
-        }
-    });
-
-    // Initialize jQuery Validation for Rates Form
-    $('#rates-form').validate({
-        rules: {
-            hourly_rate: {
-                required: true,
-                number: true,
-                min: 0
-            },
-            availability_status: {
-                required: true
-            },
-            years_experience: {
-                required: true,
-                digits: true,
-                min: 0,
-                max: 50
-            },
-            response_time: {
-                required: true
-            }
-        },
-        messages: {
-            hourly_rate: {
-                required: 'Please enter your hourly rate',
-                number: 'Please enter a valid number',
-                min: 'Hourly rate must be positive'
-            },
-            availability_status: {
-                required: 'Please select your availability status'
-            },
-            years_experience: {
-                required: 'Please enter your years of experience',
-                digits: 'Please enter a valid number',
-                min: 'Years of experience cannot be negative',
-                max: 'Years of experience cannot exceed 50'
-            },
-            response_time: {
-                required: 'Please select your typical response time'
-            }
-        },
-        errorClass: 'error',
-        validClass: 'valid',
-        errorElement: 'label',
-        errorPlacement: function(error, element) {
-            error.insertAfter(element);
-        }
-    });
-
-    // Initialize jQuery Validation for Portfolio Form
-    $('#portfolio-form').validate({
-        rules: {
-            title: {
-                required: true,
-                minlength: 3,
-                maxlength: 100
-            },
-            category_id: {
-                required: true
-            },
-            year: {
-                digits: true,
-                min: 1900,
-                max: new Date().getFullYear()
-            },
-            tags: {
-                maxlength: 500
-            }
-        },
-        messages: {
-            title: {
-                required: 'Please enter a portfolio title',
-                minlength: 'Title must be at least 3 characters',
-                maxlength: 'Title must not exceed 100 characters'
-            },
-            category_id: {
-                required: 'Please select a category'
-            },
-            year: {
-                digits: 'Please enter a valid year',
-                min: 'Year must be 1900 or later',
-                max: 'Year cannot be in the future'
-            },
-            tags: {
-                maxlength: 'Tags must not exceed 500 characters'
-            }
-        },
-        errorClass: 'error',
-        validClass: 'valid',
-        errorElement: 'label',
-        errorPlacement: function(error, element) {
-            error.insertAfter(element);
-        }
-    });
-
-    // Logout with confirmation
-    $('#vda-logout-btn').click(function(e) {
-        e.preventDefault();
-
-        Swal.fire({
-            title: 'Logout',
-            text: 'Are you sure you want to logout?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, Logout',
-            confirmButtonColor: '#f44336'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.post(skd_ajax_object.ajax_url, {
-                    action: 'skd_logout_user',
-                    nonce: nonce
-                }, function(response) {
-                    if (response.success) {
-                        window.location.href = '<?php echo home_url('/login/'); ?>';
                     }
                 });
+
+                return false;
             }
         });
-    });
 
-    // ==================== Certifications Management ====================
+        // Initialize jQuery Validation for Basic Info Form
+        $('#basic-info-form').validate({
+            rules: {
+                first_name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 50
+                },
+                last_name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 50
+                },
+                tagline: {
+                    maxlength: 200
+                },
+                short_description: {
+                    maxlength: 300
+                },
+                country: {
+                    required: true
+                },
+                city: {
+                    required: true,
+                    minlength: 2
+                },
+                timezone: {
+                    required: true
+                }
+            },
+            messages: {
+                first_name: {
+                    required: 'Please enter your first name',
+                    minlength: 'First name must be at least 2 characters',
+                    maxlength: 'First name must not exceed 50 characters'
+                },
+                last_name: {
+                    required: 'Please enter your last name',
+                    minlength: 'Last name must be at least 2 characters',
+                    maxlength: 'Last name must not exceed 50 characters'
+                },
+                tagline: {
+                    maxlength: 'Tagline must not exceed 200 characters'
+                },
+                short_description: {
+                    maxlength: 'Description must not exceed 300 characters'
+                },
+                country: {
+                    required: 'Please select your country'
+                },
+                city: {
+                    required: 'Please enter your city',
+                    minlength: 'City must be at least 2 characters'
+                },
+                timezone: {
+                    required: 'Please select your timezone'
+                }
+            },
+            errorClass: 'error',
+            validClass: 'valid',
+            errorElement: 'label',
+            errorPlacement: function(error, element) {
+                error.insertAfter(element);
+            }
+        });
 
-    // Add Certification
-    $(document).on('click', '.add-cert-btn', function() {
-        const certId = $(this).data('cert-id');
-        const requiresVerification = $(this).data('requires-verification');
+        // Initialize jQuery Validation for Skills & Services Form
+        $('#skills-services-form').validate({
+            rules: {
+                'skills[]': {
+                    required: true
+                },
+                'specializations[]': {
+                    required: true
+                }
+            },
+            messages: {
+                'skills[]': {
+                    required: 'Please select at least one skill'
+                },
+                'specializations[]': {
+                    required: 'Please select at least one specialization'
+                }
+            },
+            errorClass: 'error',
+            validClass: 'valid',
+            errorElement: 'label',
+            errorPlacement: function(error, element) {
+                error.insertAfter(element.next('.select2-container'));
+            }
+        });
 
-        if (requiresVerification == 1) {
-            // Show upload dialog
+        // Initialize jQuery Validation for Rates Form
+        $('#rates-form').validate({
+            rules: {
+                hourly_rate: {
+                    required: true,
+                    number: true,
+                    min: 0
+                },
+                availability_status: {
+                    required: true
+                },
+                years_experience: {
+                    required: true,
+                    digits: true,
+                    min: 0,
+                    max: 50
+                },
+                response_time: {
+                    required: true
+                }
+            },
+            messages: {
+                hourly_rate: {
+                    required: 'Please enter your hourly rate',
+                    number: 'Please enter a valid number',
+                    min: 'Hourly rate must be positive'
+                },
+                availability_status: {
+                    required: 'Please select your availability status'
+                },
+                years_experience: {
+                    required: 'Please enter your years of experience',
+                    digits: 'Please enter a valid number',
+                    min: 'Years of experience cannot be negative',
+                    max: 'Years of experience cannot exceed 50'
+                },
+                response_time: {
+                    required: 'Please select your typical response time'
+                }
+            },
+            errorClass: 'error',
+            validClass: 'valid',
+            errorElement: 'label',
+            errorPlacement: function(error, element) {
+                error.insertAfter(element);
+            }
+        });
+
+        // Initialize jQuery Validation for Portfolio Form
+        $('#portfolio-form').validate({
+            rules: {
+                title: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 100
+                },
+                category_id: {
+                    required: true
+                },
+                year: {
+                    digits: true,
+                    min: 1900,
+                    max: new Date().getFullYear()
+                },
+                tags: {
+                    maxlength: 500
+                }
+            },
+            messages: {
+                title: {
+                    required: 'Please enter a portfolio title',
+                    minlength: 'Title must be at least 3 characters',
+                    maxlength: 'Title must not exceed 100 characters'
+                },
+                category_id: {
+                    required: 'Please select a category'
+                },
+                year: {
+                    digits: 'Please enter a valid year',
+                    min: 'Year must be 1900 or later',
+                    max: 'Year cannot be in the future'
+                },
+                tags: {
+                    maxlength: 'Tags must not exceed 500 characters'
+                }
+            },
+            errorClass: 'error',
+            validClass: 'valid',
+            errorElement: 'label',
+            errorPlacement: function(error, element) {
+                error.insertAfter(element);
+            }
+        });
+
+        // Logout with confirmation
+        $('#vda-logout-btn').click(function(e) {
+            e.preventDefault();
+
             Swal.fire({
-                title: 'Add Certification',
-                html: `
+                title: 'Logout',
+                text: 'Are you sure you want to logout?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Logout',
+                confirmButtonColor: '#f44336'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post(skd_ajax_object.ajax_url, {
+                        action: 'skd_logout_user',
+                        nonce: nonce
+                    }, function(response) {
+                        if (response.success) {
+                            window.location.href = '<?php echo home_url('/login/'); ?>';
+                        }
+                    });
+                }
+            });
+        });
+
+        // ==================== Certifications Management ====================
+
+        // Add Certification
+        $(document).on('click', '.add-cert-btn', function() {
+            const certId = $(this).data('cert-id');
+            const requiresVerification = $(this).data('requires-verification');
+
+            if (requiresVerification == 1) {
+                // Show upload dialog
+                Swal.fire({
+                    title: 'Add Certification',
+                    html: `
                         <div style="text-align: left; margin-bottom: 15px;">
                             <label style="display: block; margin-bottom: 5px; font-weight: 600;">Upload Certificate (PDF, JPG, PNG)</label>
                             <input type="file" id="cert-upload" accept=".pdf,.jpg,.jpeg,.png" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
@@ -2601,130 +2511,111 @@ jQuery(document).ready(function($) {
                             <small style="color: #666; display: block; margin-top: 5px;"><span id="cert-notes-count">0</span>/200 characters</small>
                         </div>
                     `,
-                showCancelButton: true,
-                confirmButtonText: 'Submit for Review',
-                confirmButtonColor: '#667eea',
-                cancelButtonText: 'Cancel',
-                didOpen: () => {
-                    // Add character counter for notes
-                    $('#cert-notes').on('input', function() {
-                        $('#cert-notes-count').text($(this).val().length);
-                    });
-                },
-                preConfirm: () => {
-                    const fileInput = document.getElementById('cert-upload');
-                    if (!fileInput.files.length) {
-                        Swal.showValidationMessage('Please upload a certificate file');
-                        return false;
-                    }
-                    return {
-                        file: fileInput.files[0],
-                        notes: document.getElementById('cert-notes').value
-                    };
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const formData = new FormData();
-                    formData.append('action', 'skd_add_certification');
-                    formData.append('nonce', nonce);
-                    formData.append('certification_id', certId);
-                    formData.append('certificate_file', result.value.file);
-                    formData.append('notes', result.value.notes);
-
-                    $.ajax({
-                        url: skd_ajax_object.ajax_url,
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            if (response.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Submitted!',
-                                    text: 'Your certification has been submitted for review',
-                                    timer: 1500,
-                                    showConfirmButton: false
-                                });
-                                // Update the cert card UI
-                                const certCard = $('[data-cert-id="' + certId +
-                                    '"]');
-                                certCard.addClass('has-cert');
-                                certCard.find('.vda-cert-status').html(
-                                    '<span class="vda-badge vda-badge-warning"><iconify-icon icon="mdi:clock"></iconify-icon> Pending Review</span>'
-                                );
-
-                                // Build action buttons
-                                let actionButtons = '';
-                                if (response.data.certificate_file) {
-                                    actionButtons += '<a href="' + response.data
-                                        .certificate_file +
-                                        '" target="_blank" class="vda-btn vda-btn-sm vda-btn-outline"><iconify-icon icon="mdi:file-document"></iconify-icon> View Certificate</a> ';
-                                }
-                                actionButtons +=
-                                    '<button type="button" class="vda-btn vda-btn-sm vda-btn-outline edit-cert-btn" data-user-cert-id="' +
-                                    response.data.user_cert_id +
-                                    '"><iconify-icon icon="mdi:pencil"></iconify-icon> Edit</button> ';
-                                actionButtons +=
-                                    '<button type="button" class="vda-btn vda-btn-sm vda-btn-danger remove-cert-btn" data-user-cert-id="' +
-                                    response.data.user_cert_id +
-                                    '"><iconify-icon icon="mdi:delete"></iconify-icon> Remove</button>';
-
-                                certCard.find('.vda-cert-actions').html(
-                                    actionButtons);
-                            } else {
-                                Swal.fire('Error', response.data.message ||
-                                    'Failed to add certification', 'error');
-                            }
+                    showCancelButton: true,
+                    confirmButtonText: 'Submit for Review',
+                    confirmButtonColor: '#667eea',
+                    cancelButtonText: 'Cancel',
+                    didOpen: () => {
+                        // Add character counter for notes
+                        $('#cert-notes').on('input', function() {
+                            $('#cert-notes-count').text($(this).val().length);
+                        });
+                    },
+                    preConfirm: () => {
+                        const fileInput = document.getElementById('cert-upload');
+                        if (!fileInput.files.length) {
+                            Swal.showValidationMessage('Please upload a certificate file');
+                            return false;
                         }
-                    });
-                }
-            });
-        } else {
-            // No verification required - add directly
-            $.post(skd_ajax_object.ajax_url, {
-                action: 'skd_add_certification',
-                nonce: nonce,
-                certification_id: certId
-            }, function(response) {
-                if (response.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Added!',
-                        text: 'Certification added to your profile',
-                        timer: 1500,
-                        showConfirmButton: false
-                    });
-                    // Update the cert card UI
-                    const certCard = $('[data-cert-id="' + certId + '"]');
-                    certCard.addClass('has-cert');
-                    certCard.find('.vda-cert-status').html(
-                        '<span class="vda-badge vda-badge-success"><iconify-icon icon="mdi:check-circle"></iconify-icon> Verified</span>'
-                    );
-                    certCard.find('.vda-cert-actions').html(
-                        '<button type="button" class="vda-btn vda-btn-sm vda-btn-danger remove-cert-btn" data-user-cert-id="' +
-                        response.data.user_cert_id +
-                        '"><iconify-icon icon="mdi:delete"></iconify-icon> Remove</button>');
-                } else {
-                    Swal.fire('Error', response.data.message || 'Failed to add certification',
-                        'error');
-                }
-            });
-        }
-    });
+                        return {
+                            file: fileInput.files[0],
+                            notes: document.getElementById('cert-notes').value
+                        };
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const formData = new FormData();
+                        formData.append('action', 'skd_add_certification');
+                        formData.append('nonce', nonce);
+                        formData.append('certification_id', certId);
+                        formData.append('certificate_file', result.value.file);
+                        formData.append('notes', result.value.notes);
 
-    // Edit Certification
-    $(document).on('click', '.edit-cert-btn', function() {
-        const userCertId = $(this).data('user-cert-id');
-        const notes = $(this).data('notes') || '';
-        const certFile = $(this).data('cert-file') || '';
-        const notesLength = notes.length;
+                        $.ajax({
+                            url: skd_ajax_object.ajax_url,
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Submitted!',
+                                        text: 'Your certification has been submitted for review',
+                                        timer: 1500,
+                                        showConfirmButton: false
+                                    });
+                                    // Update the cert card UI
+                                    const certCard = $('[data-cert-id="' + certId + '"]');
+                                    certCard.addClass('has-cert');
+                                    certCard.find('.vda-cert-status').html('<span class="vda-badge vda-badge-warning"><iconify-icon icon="mdi:clock"></iconify-icon> Pending Review</span>');
 
-        // Build current file display
-        let currentFileHtml = '';
-        if (certFile) {
-            const fileName = certFile.split('/').pop();
-            currentFileHtml = `
+                                    // Build action buttons
+                                    let actionButtons = '';
+                                    if (response.data.certificate_file) {
+                                        actionButtons += '<a href="' + response.data.certificate_file + '" target="_blank" class="vda-btn vda-btn-sm vda-btn-outline"><iconify-icon icon="mdi:file-document"></iconify-icon> View Certificate</a> ';
+                                    }
+                                    actionButtons += '<button type="button" class="vda-btn vda-btn-sm vda-btn-outline edit-cert-btn" data-user-cert-id="' + response.data.user_cert_id + '"><iconify-icon icon="mdi:pencil"></iconify-icon> Edit</button> ';
+                                    actionButtons += '<button type="button" class="vda-btn vda-btn-sm vda-btn-danger remove-cert-btn" data-user-cert-id="' + response.data.user_cert_id + '"><iconify-icon icon="mdi:delete"></iconify-icon> Remove</button>';
+
+                                    certCard.find('.vda-cert-actions').html(actionButtons);
+                                } else {
+                                    Swal.fire('Error', response.data.message || 'Failed to add certification', 'error');
+                                }
+                            }
+                        });
+                    }
+                });
+            } else {
+                // No verification required - add directly
+                $.post(skd_ajax_object.ajax_url, {
+                    action: 'skd_add_certification',
+                    nonce: nonce,
+                    certification_id: certId
+                }, function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Added!',
+                            text: 'Certification added to your profile',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                        // Update the cert card UI
+                        const certCard = $('[data-cert-id="' + certId + '"]');
+                        certCard.addClass('has-cert');
+                        certCard.find('.vda-cert-status').html('<span class="vda-badge vda-badge-success"><iconify-icon icon="mdi:check-circle"></iconify-icon> Verified</span>');
+                        certCard.find('.vda-cert-actions').html('<button type="button" class="vda-btn vda-btn-sm vda-btn-danger remove-cert-btn" data-user-cert-id="' + response.data.user_cert_id + '"><iconify-icon icon="mdi:delete"></iconify-icon> Remove</button>');
+                    } else {
+                        Swal.fire('Error', response.data.message || 'Failed to add certification', 'error');
+                    }
+                });
+            }
+        });
+
+        // Edit Certification
+        $(document).on('click', '.edit-cert-btn', function() {
+            const userCertId = $(this).data('user-cert-id');
+            const notes = $(this).data('notes') || '';
+            const certFile = $(this).data('cert-file') || '';
+            const notesLength = notes.length;
+
+            // Build current file display
+            let currentFileHtml = '';
+            if (certFile) {
+                const fileName = certFile.split('/').pop();
+                currentFileHtml = `
                     <div style="background: #f5f5f5; padding: 10px; border-radius: 4px; margin-bottom: 10px;">
                         <small style="color: #666; display: block; margin-bottom: 5px;">Current File:</small>
                         <a href="${certFile}" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 500;">
@@ -2732,11 +2623,11 @@ jQuery(document).ready(function($) {
                         </a>
                     </div>
                 `;
-        }
+            }
 
-        Swal.fire({
-            title: 'Update Certification',
-            html: `
+            Swal.fire({
+                title: 'Update Certification',
+                html: `
                     <div style="text-align: left; margin-bottom: 15px;">
                         ${currentFileHtml}
                         <label style="display: block; margin-bottom: 5px; font-weight: 600;">Upload New Certificate (Optional)</label>
@@ -2749,105 +2640,95 @@ jQuery(document).ready(function($) {
                         <small style="color: #666; display: block; margin-top: 5px;"><span id="cert-notes-edit-count">${notesLength}</span>/200 characters</small>
                     </div>
                 `,
-            showCancelButton: true,
-            confirmButtonText: 'Update',
-            confirmButtonColor: '#667eea',
-            didOpen: () => {
-                // Add character counter for edit notes
-                $('#cert-notes-edit').on('input', function() {
-                    $('#cert-notes-edit-count').text($(this).val().length);
-                });
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const formData = new FormData();
-                formData.append('action', 'skd_update_certification');
-                formData.append('nonce', nonce);
-                formData.append('user_cert_id', userCertId);
-
-                const fileInput = document.getElementById('cert-upload-edit');
-                if (fileInput.files.length) {
-                    formData.append('certificate_file', fileInput.files[0]);
+                showCancelButton: true,
+                confirmButtonText: 'Update',
+                confirmButtonColor: '#667eea',
+                didOpen: () => {
+                    // Add character counter for edit notes
+                    $('#cert-notes-edit').on('input', function() {
+                        $('#cert-notes-edit-count').text($(this).val().length);
+                    });
                 }
-                formData.append('notes', document.getElementById('cert-notes-edit').value);
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const formData = new FormData();
+                    formData.append('action', 'skd_update_certification');
+                    formData.append('nonce', nonce);
+                    formData.append('user_cert_id', userCertId);
 
-                $.ajax({
-                    url: skd_ajax_object.ajax_url,
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
+                    const fileInput = document.getElementById('cert-upload-edit');
+                    if (fileInput.files.length) {
+                        formData.append('certificate_file', fileInput.files[0]);
+                    }
+                    formData.append('notes', document.getElementById('cert-notes-edit').value);
+
+                    $.ajax({
+                        url: skd_ajax_object.ajax_url,
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Updated!',
+                                    text: 'Certification updated successfully. Resubmitted for review.',
+                                    timer: 1500,
+                                    showConfirmButton: false
+                                });
+                                // Update status to pending review if file was uploaded
+                                const certCard = $('[data-user-cert-id="' + userCertId + '"]').closest('.vda-cert-card');
+                                certCard.find('.vda-cert-status').html('<span class="vda-badge vda-badge-warning"><iconify-icon icon="mdi:clock"></iconify-icon> Pending Review</span>');
+                            } else {
+                                Swal.fire('Error', response.data.message || 'Failed to update', 'error');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        // Remove Certification
+        $(document).on('click', '.remove-cert-btn', function() {
+            const userCertId = $(this).data('user-cert-id');
+
+            Swal.fire({
+                title: 'Remove Certification?',
+                text: 'This will remove the certification from your profile',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Remove',
+                confirmButtonColor: '#f44336'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post(skd_ajax_object.ajax_url, {
+                        action: 'skd_remove_certification',
+                        nonce: nonce,
+                        user_cert_id: userCertId
+                    }, function(response) {
                         if (response.success) {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Updated!',
-                                text: 'Certification updated successfully. Resubmitted for review.',
+                                title: 'Removed!',
+                                text: 'Certification removed from your profile',
                                 timer: 1500,
                                 showConfirmButton: false
                             });
-                            // Update status to pending review if file was uploaded
-                            const certCard = $('[data-user-cert-id="' + userCertId +
-                                '"]').closest('.vda-cert-card');
-                            certCard.find('.vda-cert-status').html(
-                                '<span class="vda-badge vda-badge-warning"><iconify-icon icon="mdi:clock"></iconify-icon> Pending Review</span>'
-                            );
+                            // Update the cert card UI
+                            const certCard = $('[data-user-cert-id="' + userCertId + '"]').closest('.vda-cert-card');
+                            const certId = certCard.data('cert-id');
+                            certCard.removeClass('has-cert');
+                            certCard.find('.vda-cert-status').html('');
+                            certCard.find('.vda-cert-actions').html('<button type="button" class="vda-btn vda-btn-sm vda-btn-outline add-cert-btn" data-cert-id="' + certId + '" data-requires-verification="1"><iconify-icon icon="mdi:plus"></iconify-icon> Add Certification</button>');
                         } else {
-                            Swal.fire('Error', response.data.message ||
-                                'Failed to update', 'error');
+                            Swal.fire('Error', response.data.message || 'Failed to remove', 'error');
                         }
-                    }
-                });
-            }
+                    });
+                }
+            });
         });
     });
-
-    // Remove Certification
-    $(document).on('click', '.remove-cert-btn', function() {
-        const userCertId = $(this).data('user-cert-id');
-
-        Swal.fire({
-            title: 'Remove Certification?',
-            text: 'This will remove the certification from your profile',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, Remove',
-            confirmButtonColor: '#f44336'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.post(skd_ajax_object.ajax_url, {
-                    action: 'skd_remove_certification',
-                    nonce: nonce,
-                    user_cert_id: userCertId
-                }, function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Removed!',
-                            text: 'Certification removed from your profile',
-                            timer: 1500,
-                            showConfirmButton: false
-                        });
-                        // Update the cert card UI
-                        const certCard = $('[data-user-cert-id="' + userCertId + '"]')
-                            .closest('.vda-cert-card');
-                        const certId = certCard.data('cert-id');
-                        certCard.removeClass('has-cert');
-                        certCard.find('.vda-cert-status').html('');
-                        certCard.find('.vda-cert-actions').html(
-                            '<button type="button" class="vda-btn vda-btn-sm vda-btn-outline add-cert-btn" data-cert-id="' +
-                            certId +
-                            '" data-requires-verification="1"><iconify-icon icon="mdi:plus"></iconify-icon> Add Certification</button>'
-                        );
-                    } else {
-                        Swal.fire('Error', response.data.message || 'Failed to remove',
-                            'error');
-                    }
-                });
-            }
-        });
-    });
-});
 </script>
 
 <!-- jQuery Validation Plugin -->

@@ -204,7 +204,7 @@ class SKD_PL_Registration
         // Validation
         $errors = [];
 
-        if (empty($user_type) || !in_array($user_type, ['vda', 'studio', 'employer'])) {
+        if (empty($user_type) || !in_array($user_type, ['vda', 'employer'])) {
             $errors[] = 'Please select a valid user type.';
         }
 

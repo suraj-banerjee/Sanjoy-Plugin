@@ -35,6 +35,10 @@ class SKD_Plugin_Main
         //web
         require_once SKD_PL_PLUGIN_PATH . 'includes/web/class-skd-shortcodes.php';
         require_once SKD_PL_PLUGIN_PATH . 'includes/web/class-skd-pl-vda-profile.php';
+        require_once SKD_PL_PLUGIN_PATH . 'includes/web/class-skd-pl-employer.php';
+
+        // Initialize employer functionality
+        SKD_PL_Employer::init();
     }
 
     public static function register_admin_menu()

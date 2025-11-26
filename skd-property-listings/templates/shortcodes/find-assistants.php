@@ -76,16 +76,14 @@ $professionals = $wpdb->get_results($initial_query);
                         <h4 class="skd-filter-title">SKILLS & SOFTWARE</h4>
                         <div class="skd-filter-content">
                             <div class="skd-filter-search">
-                                <input type="text" class="skd-filter-search-input" placeholder="Search software..."
-                                    id="search-software">
+                                <input type="text" class="skd-filter-search-input" placeholder="Search software..." id="search-software">
                             </div>
                             <div class="skd-filter-options" id="software-options">
                                 <?php foreach ($software as $skill): ?>
-                                <label class="skd-checkbox-label">
-                                    <input type="checkbox" name="software[]"
-                                        value="<?php echo esc_attr($skill->slug); ?>">
-                                    <span><?php echo esc_html($skill->name); ?></span>
-                                </label>
+                                    <label class="skd-checkbox-label">
+                                        <input type="checkbox" name="software[]" value="<?php echo esc_attr($skill->slug); ?>">
+                                        <span><?php echo esc_html($skill->name); ?></span>
+                                    </label>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -96,14 +94,13 @@ $professionals = $wpdb->get_results($initial_query);
                         <h4 class="skd-filter-title">EXPERIENCE</h4>
                         <div class="skd-filter-content">
                             <?php foreach ($experience_levels as $level): ?>
-                            <?php
+                                <?php
                                 $range = $level->years_max ? "{$level->years_min}-{$level->years_max}" : "{$level->years_min}+";
                                 ?>
-                            <label class="skd-checkbox-label">
-                                <input type="checkbox" name="experience_level[]"
-                                    value="<?php echo esc_attr($level->slug); ?>">
-                                <span><?php echo esc_html($level->name); ?> (<?php echo $range; ?> yrs)</span>
-                            </label>
+                                <label class="skd-checkbox-label">
+                                    <input type="checkbox" name="experience_level[]" value="<?php echo esc_attr($level->slug); ?>">
+                                    <span><?php echo esc_html($level->name); ?> (<?php echo $range; ?> yrs)</span>
+                                </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -145,11 +142,10 @@ $professionals = $wpdb->get_results($initial_query);
                         <h4 class="skd-filter-title">AVAILABILITY</h4>
                         <div class="skd-filter-content">
                             <?php foreach ($availability_types as $type): ?>
-                            <label class="skd-checkbox-label">
-                                <input type="checkbox" name="availability[]"
-                                    value="<?php echo esc_attr($type->slug); ?>">
-                                <span><?php echo esc_html($type->name); ?></span>
-                            </label>
+                                <label class="skd-checkbox-label">
+                                    <input type="checkbox" name="availability[]" value="<?php echo esc_attr($type->slug); ?>">
+                                    <span><?php echo esc_html($type->name); ?></span>
+                                </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -161,8 +157,7 @@ $professionals = $wpdb->get_results($initial_query);
                             <select name="timezone" class="skd-select-filter">
                                 <option value="">Any Time Zone</option>
                                 <?php foreach ($timezones as $tz): ?>
-                                <option value="<?php echo esc_attr($tz->value); ?>"><?php echo esc_html($tz->name); ?>
-                                </option>
+                                    <option value="<?php echo esc_attr($tz->value); ?>"><?php echo esc_html($tz->name); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -173,10 +168,10 @@ $professionals = $wpdb->get_results($initial_query);
                         <h4 class="skd-filter-title">BADGES & VERIFICATION</h4>
                         <div class="skd-filter-content">
                             <?php foreach ($certifications as $cert): ?>
-                            <label class="skd-checkbox-label">
-                                <input type="checkbox" name="badges[]" value="<?php echo esc_attr($cert->slug); ?>">
-                                <span><?php echo esc_html($cert->name); ?></span>
-                            </label>
+                                <label class="skd-checkbox-label">
+                                    <input type="checkbox" name="badges[]" value="<?php echo esc_attr($cert->slug); ?>">
+                                    <span><?php echo esc_html($cert->name); ?></span>
+                                </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -186,11 +181,10 @@ $professionals = $wpdb->get_results($initial_query);
                         <h4 class="skd-filter-title">PROJECT TYPE</h4>
                         <div class="skd-filter-content">
                             <?php foreach ($project_types as $type): ?>
-                            <label class="skd-checkbox-label">
-                                <input type="checkbox" name="project_type[]"
-                                    value="<?php echo esc_attr($type->slug); ?>">
-                                <span><?php echo esc_html($type->name); ?></span>
-                            </label>
+                                <label class="skd-checkbox-label">
+                                    <input type="checkbox" name="project_type[]" value="<?php echo esc_attr($type->slug); ?>">
+                                    <span><?php echo esc_html($type->name); ?></span>
+                                </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -200,11 +194,10 @@ $professionals = $wpdb->get_results($initial_query);
                         <h4 class="skd-filter-title">SERVICE TYPE</h4>
                         <div class="skd-filter-content">
                             <?php foreach ($service_types as $type): ?>
-                            <label class="skd-checkbox-label">
-                                <input type="checkbox" name="service_type[]"
-                                    value="<?php echo esc_attr($type->slug); ?>">
-                                <span><?php echo esc_html($type->name); ?></span>
-                            </label>
+                                <label class="skd-checkbox-label">
+                                    <input type="checkbox" name="service_type[]" value="<?php echo esc_attr($type->slug); ?>">
+                                    <span><?php echo esc_html($type->name); ?></span>
+                                </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -212,8 +205,7 @@ $professionals = $wpdb->get_results($initial_query);
                     <!-- Apply Filters Button -->
                     <div class="skd-filter-actions">
                         <!-- <button type="submit" class="skd-btn skd-btn-primary skd-btn-block">Apply</button> -->
-                        <button type="button" class="skd-btn skd-btn-secondary skd-btn-block"
-                            id="clear-filters">Clear</button>
+                        <button type="button" class="skd-btn skd-btn-secondary skd-btn-block" id="clear-filters">Clear</button>
                     </div>
 
                 </form>
@@ -225,8 +217,7 @@ $professionals = $wpdb->get_results($initial_query);
                 <!-- Results Header with Sort -->
                 <div class="skd-results-header">
                     <div class="skd-results-count">
-                        <h4>Showing <span id="results-count"><?php echo count($professionals); ?></span> professionals
-                        </h4>
+                        <strong>Showing <span id="results-count"><?php echo count($professionals); ?></span> professionals</strong>
                     </div>
                     <div class="skd-results-sort">
                         <label>Sort: </label>
@@ -248,8 +239,8 @@ $professionals = $wpdb->get_results($initial_query);
                     </div>
 
                     <?php if (!empty($professionals)): ?>
-                    <?php foreach ($professionals as $pro): ?>
-                    <?php
+                        <?php foreach ($professionals as $pro): ?>
+                            <?php
                             // Get timezone display
                             $timezone_display = 'Remote';
                             if (!empty($pro->timezone)) {
@@ -289,7 +280,7 @@ $professionals = $wpdb->get_results($initial_query);
                                         $spec_id
                                     ));
                                     if ($spec) {
-                                        $featured_skills .= '<span class="skd-skill-tag-featured"><iconify-icon icon="noto:graduation-cap"></iconify-icon> ' . esc_html($spec->name) . '</span>';
+                                        $featured_skills .= '<span class="skd-skill-tag-featured"><iconify-icon icon="mdi:check"></iconify-icon> ' . esc_html($spec->name) . '</span>';
                                     }
                                 }
                             }
@@ -315,121 +306,113 @@ $professionals = $wpdb->get_results($initial_query);
                             $avatar_url = !empty($pro->avatar_url) ? $pro->avatar_url : get_avatar_url($pro->user_id, ['size' => 200]);
                             $profile_url = home_url('/vda-profile/?vda_id=' . $pro->user_id);
                             ?>
-                    <div class="skd-professional-card" data-pro-id="<?php echo $pro->user_id; ?>">
-                        <!-- Avatar -->
-                        <div class="skd-pro-avatar">
-                            <?php if (!empty($pro->avatar_url)): ?>
-                            <img src="<?php echo esc_url($avatar_url); ?>"
-                                alt="<?php echo esc_attr($pro->display_name); ?>">
-                            <?php else: ?>
-                            <div class="skd-avatar-placeholder">
-                                <?php echo strtoupper(substr($pro->display_name, 0, 1)); ?>
-                            </div>
-                            <?php endif; ?>
-                        </div>
+                            <div class="skd-professional-card" data-pro-id="<?php echo $pro->user_id; ?>">
+                                <!-- Avatar -->
+                                <div class="skd-pro-avatar">
+                                    <?php if (!empty($pro->avatar_url)): ?>
+                                        <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($pro->display_name); ?>">
+                                    <?php else: ?>
+                                        <div class="skd-avatar-placeholder">
+                                            <?php echo strtoupper(substr($pro->display_name, 0, 1)); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
 
-                        <!-- Name & Title -->
-                        <div class="skd-pro-header">
-                            <h5 class="skd-pro-name">
-                                <a href="<?php echo esc_url($profile_url); ?>">
-                                    <?php echo esc_html($pro->display_name); ?>
-                                </a>
-                                <?php if ($pro->is_verified): ?>
-                                <iconify-icon icon="mdi:verified-user" class="skd-icon-verified"></iconify-icon>
+                                <!-- Name & Title -->
+                                <div class="skd-pro-header">
+                                    <h3 class="skd-pro-name">
+                                        <a href="<?php echo esc_url($profile_url); ?>">
+                                            <?php echo esc_html($pro->display_name); ?>
+                                        </a>
+                                        <?php if ($pro->is_verified): ?>
+                                            <iconify-icon icon="mdi:check-decagram" class="skd-icon-verified"></iconify-icon>
+                                        <?php endif; ?>
+                                    </h3>
+                                    <p class="skd-pro-title"><?php echo esc_html($pro->tagline ?? 'Individual Designer'); ?></p>
+                                </div>
+
+                                <!-- Location & Rate -->
+                                <div class="skd-pro-meta">
+                                    <span class="skd-pro-location">
+                                        <iconify-icon icon="mdi:map-marker"></iconify-icon>
+                                        <?php echo esc_html($timezone_display); ?>
+                                    </span>
+                                    <span class="skd-pro-rate">
+                                        <iconify-icon icon="mdi:currency-usd"></iconify-icon>
+                                        $<?php echo number_format($pro->hourly_rate ?? 0, 0); ?>/hour
+                                    </span>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="skd-pro-bio">
+                                    <?php echo wp_trim_words($pro->bio ?? 'No description available.', 20); ?>
+                                </div>
+
+                                <!-- Skills Tags -->
+                                <div class="skd-pro-skills">
+                                    <?php echo $skills_html; ?>
+                                </div>
+
+                                <!-- Featured Skills -->
+                                <?php if (!empty($featured_skills)): ?>
+                                    <div class="skd-pro-featured-skills">
+                                        <?php echo $featured_skills; ?>
+                                    </div>
                                 <?php endif; ?>
-                            </h5>
-                            <p class="skd-pro-title"><?php echo esc_html($pro->tagline ?? 'Individual Designer'); ?></p>
-                        </div>
 
-                        <!-- Location & Rate -->
-                        <div class="skd-pro-meta">
-                            <span class="skd-pro-location">
-                                <iconify-icon icon="mdi:map-marker"></iconify-icon>
-                                <?php echo esc_html($timezone_display); ?>
-                            </span>
-                            <span class="skd-pro-rate">
-                                <iconify-icon icon="solar:money-bag-bold"></iconify-icon>
-                                <span> $<?php echo number_format($pro->hourly_rate ?? 0, 0); ?></span> /hour
-                            </span>
-                        </div>
+                                <!-- Project Type Icons -->
+                                <?php if (!empty($project_icons)): ?>
+                                    <div class="skd-pro-project-types">
+                                        <?php echo $project_icons; ?>
+                                    </div>
+                                <?php endif; ?>
 
-                        <!-- Description -->
-                        <div class="skd-pro-bio">
-                            <?php echo wp_trim_words($pro->bio ?? 'No description available.', 20); ?>
-                        </div>
-                        <div class="skd-pro-skills-Featureds-wrapper">
-                            <!-- Skills Tags -->
-                            <div class="skd-pro-skills">
-                                <?php echo $skills_html; ?>
+                                <!-- Action Buttons -->
+                                <div class="skd-pro-actions">
+                                    <a href="<?php echo esc_url($profile_url); ?>" class="skd-btn skd-btn-primary">View Profile</a>
+                                    <a href="<?php echo esc_url(home_url('/hire-vda/?vda_id=' . $pro->user_id)); ?>" class="skd-btn skd-btn-secondary">Hire / Message</a>
+                                </div>
                             </div>
-
-                            <!-- Featured Skills -->
-                            <?php if (!empty($featured_skills)): ?>
-                            <div class="skd-pro-featured-skills">
-                                <?php echo $featured_skills; ?>
-                            </div>
-                            <?php endif; ?>
-                        </div>
-                        <!-- Project Type Icons -->
-                        <?php if (!empty($project_icons)): ?>
-                        <div class="skd-pro-project-types">
-                            <?php echo $project_icons; ?>
-                        </div>
-                        <?php endif; ?>
-
-                        <!-- Action Buttons -->
-                        <div class="skd-pro-actions">
-                            <a href="<?php echo esc_url($profile_url); ?>" class="skd-btn skd-btn-primary">View
-                                Profile</a>
-                            <a href="<?php echo esc_url(home_url('/hire-vda/?vda_id=' . $pro->user_id)); ?>"
-                                class="skd-btn vda-btn-outline">Hire / Message</a>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
                     <?php else: ?>
-                    <div class="skd-no-results">
-                        <iconify-icon icon="mdi:account-search"></iconify-icon>
-                        <h3>No VDAs found</h3>
-                        <p>Try adjusting your filters to see more results.</p>
-                    </div>
+                        <div class="skd-no-results">
+                            <iconify-icon icon="mdi:account-search"></iconify-icon>
+                            <h3>No VDAs found</h3>
+                            <p>Try adjusting your filters to see more results.</p>
+                        </div>
                     <?php endif; ?>
                 </div>
 
                 <!-- Pagination -->
                 <?php if ($total_pages > 1): ?>
-                <div class="skd-pagination">
-                    <?php if ($current_page > 1): ?>
-                    <a href="?paged=<?php echo ($current_page - 1); ?>" class="skd-page-link skd-page-prev"
-                        data-page="<?php echo ($current_page - 1); ?>">
-                        <iconify-icon icon="mdi:chevron-left"></iconify-icon> Previous
-                    </a>
-                    <?php endif; ?>
+                    <div class="skd-pagination">
+                        <?php if ($current_page > 1): ?>
+                            <a href="?paged=<?php echo ($current_page - 1); ?>" class="skd-page-link skd-page-prev" data-page="<?php echo ($current_page - 1); ?>">
+                                <iconify-icon icon="mdi:chevron-left"></iconify-icon> Previous
+                            </a>
+                        <?php endif; ?>
 
-                    <div class="skd-page-numbers">
-                        <?php for ($i = 1; $i <= min($total_pages, 5); $i++): ?>
-                        <a href="?paged=<?php echo $i; ?>"
-                            class="skd-page-link <?php echo $i === $current_page ? 'active' : ''; ?>"
-                            data-page="<?php echo $i; ?>">
-                            <?php echo $i; ?>
-                        </a>
-                        <?php endfor; ?>
+                        <div class="skd-page-numbers">
+                            <?php for ($i = 1; $i <= min($total_pages, 5); $i++): ?>
+                                <a href="?paged=<?php echo $i; ?>" class="skd-page-link <?php echo $i === $current_page ? 'active' : ''; ?>" data-page="<?php echo $i; ?>">
+                                    <?php echo $i; ?>
+                                </a>
+                            <?php endfor; ?>
 
-                        <?php if ($total_pages > 5): ?>
-                        <span class="skd-page-dots">...</span>
-                        <a href="?paged=<?php echo $total_pages; ?>" class="skd-page-link"
-                            data-page="<?php echo $total_pages; ?>">
-                            <?php echo $total_pages; ?>
-                        </a>
+                            <?php if ($total_pages > 5): ?>
+                                <span class="skd-page-dots">...</span>
+                                <a href="?paged=<?php echo $total_pages; ?>" class="skd-page-link" data-page="<?php echo $total_pages; ?>">
+                                    <?php echo $total_pages; ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+
+                        <?php if ($current_page < $total_pages): ?>
+                            <a href="?paged=<?php echo ($current_page + 1); ?>" class="skd-page-link skd-page-next" data-page="<?php echo ($current_page + 1); ?>">
+                                Next <iconify-icon icon="mdi:chevron-right"></iconify-icon>
+                            </a>
                         <?php endif; ?>
                     </div>
-
-                    <?php if ($current_page < $total_pages): ?>
-                    <a href="?paged=<?php echo ($current_page + 1); ?>" class="skd-page-link skd-page-next"
-                        data-page="<?php echo ($current_page + 1); ?>">
-                        Next <iconify-icon icon="mdi:chevron-right"></iconify-icon>
-                    </a>
-                    <?php endif; ?>
-                </div>
                 <?php endif; ?>
 
             </main>
@@ -439,197 +422,192 @@ $professionals = $wpdb->get_results($initial_query);
 </div>
 
 <script>
-jQuery(document).ready(function($) {
-    // Load filters from URL parameters on page load
-    function loadFiltersFromURL() {
-        const urlParams = new URLSearchParams(window.location.search);
+    jQuery(document).ready(function($) {
+        // Load filters from URL parameters on page load
+        function loadFiltersFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
 
-        // Check software/skills checkboxes
-        const software = urlParams.getAll('software[]');
-        software.forEach(function(id) {
-            $('input[name="software[]"][value="' + id + '"]').prop('checked', true);
-        });
+            // Check software/skills checkboxes
+            const software = urlParams.getAll('software[]');
+            software.forEach(function(id) {
+                $('input[name="software[]"][value="' + id + '"]').prop('checked', true);
+            });
 
-        // Set timezone
-        const timezone = urlParams.get('timezone');
-        if (timezone) {
-            $('select[name="timezone"]').val(timezone);
+            // Set timezone
+            const timezone = urlParams.get('timezone');
+            if (timezone) {
+                $('select[name="timezone"]').val(timezone);
+            }
+
+            // Set experience level
+            const experienceLevel = urlParams.getAll('experience_level[]');
+            experienceLevel.forEach(function(level) {
+                $('input[name="experience_level[]"][value="' + level + '"]').prop('checked', true);
+            });
+
+            // Set hourly rate
+            const hourlyRate = urlParams.getAll('hourly_rate[]');
+            hourlyRate.forEach(function(rate) {
+                $('input[name="hourly_rate[]"][value="' + rate + '"]').prop('checked', true);
+            });
+
+            // Set availability
+            const availability = urlParams.getAll('availability[]');
+            availability.forEach(function(id) {
+                $('input[name="availability[]"][value="' + id + '"]').prop('checked', true);
+            });
+
+            // Set project type
+            const projectType = urlParams.getAll('project_type[]');
+            projectType.forEach(function(id) {
+                $('input[name="project_type[]"][value="' + id + '"]').prop('checked', true);
+            });
+
+            // Set service type
+            const serviceType = urlParams.getAll('service_type[]');
+            serviceType.forEach(function(id) {
+                $('input[name="service_type[]"][value="' + id + '"]').prop('checked', true);
+            });
+
+            // Set badges
+            const badges = urlParams.getAll('badges[]');
+            badges.forEach(function(id) {
+                $('input[name="badges[]"][value="' + id + '"]').prop('checked', true);
+            });
+
+            // Set rating
+            const rating = urlParams.get('rating');
+            if (rating) {
+                $('input[name="rating"][value="' + rating + '"]').prop('checked', true);
+            }
+
+            // Set sort by
+            const sortBy = urlParams.get('sort_by');
+            if (sortBy) {
+                $('#sort-professionals').val(sortBy);
+            }
+
+            // If there are filters in URL, trigger filter
+            if (window.location.search) {
+                filterProfessionals();
+            }
         }
 
-        // Set experience level
-        const experienceLevel = urlParams.getAll('experience_level[]');
-        experienceLevel.forEach(function(level) {
-            $('input[name="experience_level[]"][value="' + level + '"]').prop('checked', true);
-        });
+        // Real-time filter functionality with URL updates
+        function filterProfessionals(page = 1) {
+            const formData = $('#assistants-filter-form').serialize();
+            const sortBy = $('#sort-professionals').val();
 
-        // Set hourly rate
-        const hourlyRate = urlParams.getAll('hourly_rate[]');
-        hourlyRate.forEach(function(rate) {
-            $('input[name="hourly_rate[]"][value="' + rate + '"]').prop('checked', true);
-        });
+            // Update URL parameters
+            const params = new URLSearchParams(formData);
+            if (sortBy) params.set('sort_by', sortBy);
+            if (page > 1) params.set('paged', page);
+            const newUrl = window.location.pathname + '?' + params.toString();
+            window.history.pushState({}, '', newUrl);
 
-        // Set availability
-        const availability = urlParams.getAll('availability[]');
-        availability.forEach(function(id) {
-            $('input[name="availability[]"][value="' + id + '"]').prop('checked', true);
-        });
+            $.ajax({
+                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                type: 'POST',
+                data: {
+                    action: 'skd_filter_professionals',
+                    filters: formData,
+                    sort_by: sortBy,
+                    paged: page
+                },
+                beforeSend: function() {
+                    $('#grid-loader').fadeIn(200);
+                    $('#professionals-grid > :not(#grid-loader)').css('opacity', '0.3');
+                },
+                success: function(response) {
+                    $('#grid-loader').fadeOut(200);
+                    $('#professionals-grid > :not(#grid-loader)').css('opacity', '1');
 
-        // Set project type
-        const projectType = urlParams.getAll('project_type[]');
-        projectType.forEach(function(id) {
-            $('input[name="project_type[]"][value="' + id + '"]').prop('checked', true);
-        });
+                    if (response.success) {
+                        // Remove all children except loader
+                        $('#professionals-grid').children(':not(#grid-loader)').remove();
+                        // Append new content after loader
+                        $('#professionals-grid').append(response.data.html);
+                        $('#results-count').text(response.data.count);
 
-        // Set service type
-        const serviceType = urlParams.getAll('service_type[]');
-        serviceType.forEach(function(id) {
-            $('input[name="service_type[]"][value="' + id + '"]').prop('checked', true);
-        });
+                        // Update or add pagination
+                        if (response.data.pagination) {
+                            $('.skd-pagination').remove();
+                            $('.skd-assistants-content').append(response.data.pagination);
+                        } else {
+                            $('.skd-pagination').remove();
+                        }
 
-        // Set badges
-        const badges = urlParams.getAll('badges[]');
-        badges.forEach(function(id) {
-            $('input[name="badges[]"][value="' + id + '"]').prop('checked', true);
-        });
-
-        // Set rating
-        const rating = urlParams.get('rating');
-        if (rating) {
-            $('input[name="rating"][value="' + rating + '"]').prop('checked', true);
-        }
-
-        // Set sort by
-        const sortBy = urlParams.get('sort_by');
-        if (sortBy) {
-            $('#sort-professionals').val(sortBy);
-        }
-
-        // If there are filters in URL, trigger filter
-        if (window.location.search) {
-            filterProfessionals();
-        }
-    }
-
-    // Real-time filter functionality with URL updates
-    function filterProfessionals(page = 1) {
-        const formData = $('#assistants-filter-form').serialize();
-        const sortBy = $('#sort-professionals').val();
-
-        // Update URL parameters
-        const params = new URLSearchParams(formData);
-        if (sortBy) params.set('sort_by', sortBy);
-        if (page > 1) params.set('paged', page);
-        const newUrl = window.location.pathname + '?' + params.toString();
-        window.history.pushState({}, '', newUrl);
-
-        $.ajax({
-            url: '<?php echo admin_url('admin-ajax.php'); ?>',
-            type: 'POST',
-            data: {
-                action: 'skd_filter_professionals',
-                filters: formData,
-                sort_by: sortBy,
-                paged: page
-            },
-            beforeSend: function() {
-                $('#grid-loader').fadeIn(200);
-                $('#professionals-grid > :not(#grid-loader)').css('opacity', '0.3');
-            },
-            success: function(response) {
-                $('#grid-loader').fadeOut(200);
-                $('#professionals-grid > :not(#grid-loader)').css('opacity', '1');
-
-                if (response.success) {
-                    // Remove all children except loader
-                    $('#professionals-grid').children(':not(#grid-loader)').remove();
-                    // Append new content after loader
-                    $('#professionals-grid').append(response.data.html);
-                    $('#results-count').text(response.data.count);
-
-                    // Update or add pagination
-                    if (response.data.pagination) {
-                        $('.skd-pagination').remove();
-                        $('.skd-assistants-content').append(response.data.pagination);
+                        // Scroll to top of results
+                        $('html, body').animate({
+                            scrollTop: $('#professionals-grid').offset().top - 100
+                        }, 300);
                     } else {
+                        $('#professionals-grid').children(':not(#grid-loader)').remove();
+                        $('#professionals-grid').append('<div class="skd-no-results"><iconify-icon icon="mdi:account-search"></iconify-icon><h3>No professionals found</h3><p>Try adjusting your filters.</p></div>');
                         $('.skd-pagination').remove();
                     }
-
-                    // Scroll to top of results
-                    $('html, body').animate({
-                        scrollTop: $('#professionals-grid').offset().top - 100
-                    }, 300);
-                } else {
+                },
+                error: function() {
+                    $('#grid-loader').fadeOut(200);
+                    $('#professionals-grid > :not(#grid-loader)').css('opacity', '1');
                     $('#professionals-grid').children(':not(#grid-loader)').remove();
-                    $('#professionals-grid').append(
-                        '<div class="skd-no-results"><iconify-icon icon="mdi:account-search"></iconify-icon><h3>No professionals found</h3><p>Try adjusting your filters.</p></div>'
-                    );
-                    $('.skd-pagination').remove();
+                    $('#professionals-grid').append('<div class="skd-no-results"><p>Error loading professionals. Please try again.</p></div>');
                 }
-            },
-            error: function() {
-                $('#grid-loader').fadeOut(200);
-                $('#professionals-grid > :not(#grid-loader)').css('opacity', '1');
-                $('#professionals-grid').children(':not(#grid-loader)').remove();
-                $('#professionals-grid').append(
-                    '<div class="skd-no-results"><p>Error loading professionals. Please try again.</p></div>'
-                );
-            }
-        });
-    }
+            });
+        }
 
-    // Trigger filter on checkbox/select change
-    $('#assistants-filter-form input[type="checkbox"], #assistants-filter-form select').on('change',
-        function() {
+        // Trigger filter on checkbox/select change
+        $('#assistants-filter-form input[type="checkbox"], #assistants-filter-form select').on('change', function() {
             filterProfessionals();
         });
 
-    // Sort change handler
-    $('#sort-professionals').on('change', function() {
-        filterProfessionals();
-    });
-
-    // Pagination click handler (delegated for dynamically added elements)
-    $(document).on('click', '.skd-page-link', function(e) {
-        e.preventDefault();
-        const page = $(this).data('page');
-        if (page) {
-            filterProfessionals(page);
-        }
-    });
-
-    // Clear filters handler
-    $(document).on('click', '.skd-page-link', function(e) {
-        e.preventDefault();
-        const page = $(this).data('page');
-        if (page) {
-            filterProfessionals(page);
-        }
-    });
-
-    // Search within software filter
-    $('#search-software').on('keyup', function() {
-        const searchTerm = $(this).val().toLowerCase();
-        $('#software-options label').each(function() {
-            const text = $(this).text().toLowerCase();
-            $(this).toggle(text.includes(searchTerm));
+        // Sort change handler
+        $('#sort-professionals').on('change', function() {
+            filterProfessionals();
         });
-    });
 
-    // Clear all filters
-    $('#clear-all-filters, #clear-filters').on('click', function(e) {
-        e.preventDefault();
-        $('#assistants-filter-form')[0].reset();
-        window.history.pushState({}, '', window.location.pathname);
-        filterProfessionals();
-    });
+        // Pagination click handler (delegated for dynamically added elements)
+        $(document).on('click', '.skd-page-link', function(e) {
+            e.preventDefault();
+            const page = $(this).data('page');
+            if (page) {
+                filterProfessionals(page);
+            }
+        });
 
-    // Prevent form submission
-    $('#assistants-filter-form').on('submit', function(e) {
-        e.preventDefault();
-        return false;
-    });
+        // Clear filters handler
+        $(document).on('click', '.skd-page-link', function(e) {
+            e.preventDefault();
+            const page = $(this).data('page');
+            if (page) {
+                filterProfessionals(page);
+            }
+        });
 
-    // Load filters from URL on page load
-    loadFiltersFromURL();
-});
+        // Search within software filter
+        $('#search-software').on('keyup', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#software-options label').each(function() {
+                const text = $(this).text().toLowerCase();
+                $(this).toggle(text.includes(searchTerm));
+            });
+        });
+
+        // Clear all filters
+        $('#clear-all-filters, #clear-filters').on('click', function(e) {
+            e.preventDefault();
+            $('#assistants-filter-form')[0].reset();
+            window.history.pushState({}, '', window.location.pathname);
+            filterProfessionals();
+        });
+
+        // Prevent form submission
+        $('#assistants-filter-form').on('submit', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Load filters from URL on page load
+        loadFiltersFromURL();
+    });
 </script>
