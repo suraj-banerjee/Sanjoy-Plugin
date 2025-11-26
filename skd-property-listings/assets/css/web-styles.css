@@ -1,8 +1,7 @@
 /* ================================================
    INTERIASSIST STYLE GUIDE - CSS VARIABLES
    ================================================ */
-
-:root {
+sanjoycss :root {
   /* Colors */
   --color-primary: #093c61;
   --color-secondary: #3b434b;
