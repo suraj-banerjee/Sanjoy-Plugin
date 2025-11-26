@@ -1,0 +1,77 @@
+/* Basic admin styles */
+.skd-pl-admin-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#pricePlanForm {
+    padding-top: 10px;
+    min-width: 763px;
+}
+
+/* switch css */
+/* Switch Flat
+==========================*/
+.skdSwitchInner {
+    font-size: 15px;
+    padding: 3px;
+    position: relative;
+    display: inline-block;
+    border: 1px solid #e9e9e9;
+    border-radius: 17px;
+}
+
+.skdSwitchInner input[type=checkbox] {
+    display: none;
+}
+
+.skdSwitchInner span {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    line-height: 27px;
+    padding: 5px 10.5px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.skdSwitchInner .skdSwitchInner-switch-yes {
+    border-radius: 15px 0 0 15px;
+}
+
+.skdSwitchInner .skdSwitchInner-switch-no {
+    border-radius: 0 15px 15px 0;
+}
+
+.skdSwitchInner input[type=checkbox]:checked+.skdSwitchInner-switch-yes {
+    background-color: #3E62F5;
+    color: #fff;
+}
+
+.skdSwitchInner input[type=checkbox]:checked+span+.skdSwitchInner-switch-no {
+    background-color: transparent;
+    color: #9b9eaf;
+}
+
+.skdSwitchInner input[type=checkbox] .skdSwitchInner-switch-yes {
+    background-color: transparent;
+    color: #9b9eaf;
+}
+
+.skdSwitchInner input[type=checkbox]+span+.skdSwitchInner-switch-no {
+    background-color: #fb6665;
+    color: #111;
+}
+
+/* switch css */
+.skd055textlabel {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 6px;
+    margin-bottom: 0px;
+    color: #696969;
+    margin-left: 10px;
+}

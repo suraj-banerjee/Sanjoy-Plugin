@@ -1,0 +1,568 @@
+/**
+ * VDA Listing / Find Assistants Page Styles
+ * For the VDA directory/search page
+ */
+
+.vda-listing-page {
+  background: #f5f7fa;
+  padding: 40px 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+}
+
+.vda-listing-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Page Header */
+.vda-listing-header {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.vda-listing-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.vda-listing-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+/* Search & Filter Bar */
+.vda-search-bar {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.vda-search-input-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.vda-search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.vda-search-input {
+  width: 100%;
+  padding: 14px 20px 14px 50px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.vda-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.vda-filters-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.vda-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vda-filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vda-filter-select,
+.vda-filter-input {
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: white;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.vda-filter-select:focus,
+.vda-filter-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.vda-filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.vda-btn-filter {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.vda-btn-apply {
+  background-color: var(--e-global-color-accent);
+  color: white;
+}
+
+.vda-btn-apply:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.vda-btn-clear {
+  background: white;
+  color: #666;
+  border: 2px solid #e0e0e0;
+}
+
+.vda-btn-clear:hover {
+  background: #f5f5f5;
+}
+
+/* Results Header */
+.vda-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 0 5px;
+}
+
+.vda-results-count {
+  font-size: 16px;
+  color: #666;
+}
+
+.vda-results-count strong {
+  color: #333;
+  font-weight: 700;
+}
+
+.vda-sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vda-sort-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.vda-sort-select {
+  padding: 8px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: white;
+  cursor: pointer;
+}
+
+/* Listing Grid */
+.vda-listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* VDA Card */
+.vda-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.vda-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.vda-card-header {
+  padding: 25px;
+  display: flex;
+  gap: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.vda-card-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.vda-card-avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--e-global-color-accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.vda-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.vda-card-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vda-card-verified {
+  color: #4caf50;
+  font-size: 18px;
+}
+
+.vda-card-title {
+  font-size: 14px;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.vda-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.vda-card-stars {
+  color: #ffc107;
+}
+
+.vda-card-rating-text {
+  color: #666;
+}
+
+.vda-card-body {
+  padding: 20px 25px;
+  flex: 1;
+}
+
+.vda-card-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vda-card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.vda-card-skill {
+  background: #f5f5f5;
+  color: #666;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.vda-card-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.vda-card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.vda-card-meta-icon {
+  color: var(--color-primary);
+  font-size: 16px;
+}
+
+.vda-card-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vda-card-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.vda-card-price-label {
+  font-size: 13px;
+  color: #999;
+  font-weight: 400;
+}
+
+.vda-card-btn {
+  padding: 10px 20px;
+  background-color: var(--e-global-color-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.vda-card-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Badges on Cards */
+.vda-card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.vda-card-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.vda-card-badge.top-rated {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.vda-card-badge.featured {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.vda-card-badge.online {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Pagination */
+.vda-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.vda-pagination-btn {
+  padding: 10px 16px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  color: #666;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 44px;
+  text-align: center;
+}
+
+.vda-pagination-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.vda-pagination-btn.active {
+  background-color: var(--e-global-color-accent);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.vda-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Loading State */
+.vda-loading {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.vda-loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e0e0e0;
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vda-loading-text {
+  color: #999;
+  font-size: 16px;
+}
+
+/* Empty State */
+.vda-empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+.vda-empty-icon {
+  font-size: 64px;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.vda-empty-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.vda-empty-text {
+  font-size: 16px;
+  color: #999;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .vda-listing-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .vda-listing-header h1 {
+    font-size: 26px;
+  }
+
+  .vda-filters-row {
+    grid-template-columns: 1fr;
+  }
+
+  .vda-results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .vda-listing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vda-card-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .vda-pagination {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .vda-listing-page {
+    padding: 20px 0;
+  }
+
+  .vda-search-bar,
+  .vda-listing-header {
+    padding: 20px;
+  }
+
+  .vda-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vda-card-footer {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .vda-card-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
